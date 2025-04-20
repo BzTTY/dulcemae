@@ -11,6 +11,6 @@
 
 ## Tecnologías utilizadas
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - GitHub Pages para el hosting
