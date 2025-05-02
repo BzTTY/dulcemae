@@ -30,14 +30,14 @@
 
 ---
 
-## Instalacion 
+## Instalacion.
 
 1. Clonar el repositorio
 ``` bash
 git clone git clone https://github.com/BzTTY/webpage.github.io
 ```
 
-## Avances Semanales 
+## Avances Semanales.
 
 |semana   |avance                        |link| 
 |---------|------------------------------|----|
