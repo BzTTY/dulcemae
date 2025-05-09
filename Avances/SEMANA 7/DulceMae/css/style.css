@@ -900,7 +900,7 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  background-color: #222831;
+  background-color: #C06E52;
   color: #ffffff;
   padding: 75px 0 40px 0;
   text-align: center;
@@ -945,7 +945,7 @@ a:focus {
 }
 
 .footer_section .footer_contact .contact_link_box a:hover {
-  color: #ffbe33;
+  color: #43281C;
 }
 
 .footer_section .footer-logo {
@@ -977,7 +977,7 @@ a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #222831;
+  color: #C06E52;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -988,7 +988,7 @@ a:focus {
 }
 
 .footer_section .footer_social a:hover {
-  color: #ffbe33;
+  color: #43281C;
 }
 
 .footer_section .footer-info {
