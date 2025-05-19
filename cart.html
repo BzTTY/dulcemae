@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-  <!-- Basic -->
+  <!-- Básico -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
+  <!-- Metas para móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
+  <!-- Metas del sitio -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Dulce Mae </title>
+  <title>Dulce Mae Carrito</title>
 
-  <!-- bootstrap core css -->
+
+  <!-- hoja de estilos del núcleo de bootstrap -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
-  <!--owl slider stylesheet -->
+  <!-- hoja de estilos del carrusel de búho (Owl Carousel) -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
+
+  <!-- nice select -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
+  
+  <!-- estilo de fuente awesome -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
-  <!-- Custom styles for this template -->
+  <!-- Estilos personalizados para esta plantilla -->
   <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
+  <!-- estilo responsivo -->
   <link href="css/responsive.css" rel="stylesheet" />
-
 </head>
 
-<body class="sub_page">
+<body>
 
   <div class="hero_area">
     <div class="bg-box">
       <img src="images/hero-bg.jpg" alt="">
     </div>
-    <!-- header section strats -->
-    <header class="header_section">
+    <!-- Sección de encabezado comienza -->
+<header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
@@ -54,8 +56,8 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Inicio </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="menu.html">Catalogo</a>
@@ -63,15 +65,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="about.html">Sobre Nosotros</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="book.html">Pedido<span class="sr-only">(current)</span> </a>
+              <li class="nav-item">
+                <a class="nav-link" href="book.html">Pedido</a>
               </li>
             </ul>
             <div class="user_option">
+              <!-- link de usuario-->
               <a href="" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="cart.html">
+                <!-- Icono del carrito  agregar link de carrito-->
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -93,36 +97,6 @@
                    c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                     </g>
                   </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
                 </svg>
               </a>
               <form class="form-inline">
@@ -130,7 +104,8 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="book.html" class="order_online">
+              <a href="" class="order_online">
+                <!-- link de orden en linea-->
                 Pedido Online
               </a>
             </div>
@@ -138,96 +113,104 @@
         </nav>
       </div>
     </header>
-    <!-- end header section -->
+    <!-- Fin de la sección de encabezado -->
   </div>
 
-  <!-- book section -->
-  <section class="book_section layout_padding">
+  <!-- Sección del carrito de compras -->
+  <section class="cart_section layout_padding">
     <div class="container">
-      <div class="heading_container">
+      <div class="heading_container heading_center">
         <h2>
-          Realizar Pedido
+          Tu Carrito de Compras
         </h2>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Tu nombre" />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Telefono" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Correo" />
-              </div>
-              <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    Para cuantas Personas?
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
-                </select>
-              </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Realizar Pedido
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
-        </div>
+      <div class="cart_items">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Subtotal</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+            <tr>
+              <td>
+                <div class="product-info">
+                  <img src="images/f1.png" alt="Delicious Pizza" class="img-fluid" />
+                  <span>Delicious Pizza</span>
+                </div>
+              </td>
+              <td>
+                <input type="number" value="1" min="1" class="form-control quantity" onchange="updateTotal()" />
+              </td>
+              <td class="price">$20.000</td>
+              <td class="subtotal">$20.000</td>
+              <td>
+                <button class="btn btn-danger" onclick="removeItem(this)">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-info">
+                  <img src="images/f2.png" alt="Delicious Burger" class="img-fluid" />
+                  <span>Delicious Burger</span>
+                </div>
+              </td>
+              <td>
+                <input type="number" value="1" min="1" class="form-control quantity" onchange="updateTotal()" />
+              </td>
+              <td class="price">$15.000</td>
+              <td class="subtotal">$15.000</td>
+              <td>
+                <button class="btn btn-danger" onclick="removeItem(this)">Eliminar</button>
+              </td>
+            </tr>
+            <!-- Agregar más productos aquí -->
+          </tbody>
+        </table>
+      </div>
+      <div class="total_price">
+        <h4>Total: <span id="total-amount">$35.000</span></h4>
+      </div>
+      <div class="btn_box">
+        <a href="checkout.html" class="btn btn-primary">Proceder al Pago</a>
       </div>
     </div>
   </section>
-  <!-- end book section -->
+  <!-- Fin de la sección del carrito de compras -->
 
-  <!-- footer section -->
+  <!-- Sección del pie de página -->
   <footer class="footer_section">
     <div class="container">
       <div class="row">
         <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4>
-              Contact Us
+              Contactanos
             </h4>
             <div class="contact_link_box">
               <a href="">
+                <!--link de la ubicacion-->
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Ubicación
                 </span>
               </a>
               <a href="">
+                <!-- link de whatsapp-->
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Teléfono +569 79652048
                 </span>
               </a>
               <a href="">
+                <!-- link de correo-->
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  dulcemaeoficial@gmail.com
                 </span>
               </a>
             </div>
@@ -236,22 +219,22 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Dulce Mae
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+              Mi sueño es que mis productos lleguen a más personas. Aspiro a que en el futuro, mis creaciones estén disponibles en muchas pastelerías en Chile y que más familias puedan disfrutar de lo que hago con tanto cariño
             </p>
             <div class="footer_social">
               <a href="">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
-              <a href="">
+              <a href="https://www.tiktok.com/@dulcemaeoficial?lang=es">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
               </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              <a href="https://www.tiktok.com/@dulcemaeoficial?lang=es">
+                <i class="bi bi-tiktok" aria-hidden="true"></i>
               </a>
-              <a href="">
+              <a href="https://www.instagram.com/dulcemaeoficial/">
                 <i class="fa fa-instagram" aria-hidden="true"></i>
               </a>
               <a href="">
@@ -262,10 +245,10 @@
         </div>
         <div class="col-md-4 footer-col">
           <h4>
-            Opening Hours
+            Horario
           </h4>
           <p>
-            Everyday
+            Todos los días
           </p>
           <p>
             10.00 Am -10.00 Pm
@@ -274,17 +257,17 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+          &copy; <span id="displayYear"></span> Todos los derechos reservados por
+          <a href="https://media.istockphoto.com/id/1464383776/es/foto/jesucristo-resucitado-ascendiendo-sobre-el-cielo-y-las-nubes-concepto-del-cielo.webp?s=2048x2048&w=is&k=20&c=JlcghhHZZo-WEIIhsWameVAhj0HxUJ4y0oXSF0tghco=">DIOSITO</a><br><br>
+          &copy; <span id="displayYear"></span> Distribuido por
+          <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjYcYp19XSUN77970riaFj_3rs-dL5A-k1J5sU9FhHIUvXIVeb2PdPngn9xq0-XCSt8htKjX-oPb9xtWnpy6GwEtZsVKcpQJ1lcAgJIFvAc1OtSB01SLbcb4Uq_wDigWyxPE8IpYWXD6jU/s1600/Incredibles_19.jpg" target="_blank"> la mami del Maty</a>
         </p>
       </div>
     </div>
   </footer>
-  <!-- footer section -->
+  <!-- Fin de la sección del pie de página -->
 
-  <!-- jQery -->
+  <!-- jQuery -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
@@ -303,7 +286,30 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
-  <!-- End Google Map -->
+  <!-- Fin del Mapa de Google -->
+
+  <script>
+    // Función para actualizar el total
+    function updateTotal() {
+      let total = 0;
+      const cartItems = document.querySelectorAll('#cart-body tr');
+      cartItems.forEach(item => {
+        const price = parseFloat(item.querySelector('.price').textContent.replace('$', ''));
+        const quantity = item.querySelector('.quantity').value;
+        const subtotal = price * quantity;
+        item.querySelector('.subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        total += subtotal;
+      });
+      document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Función para eliminar un producto del carrito
+    function removeItem(button) {
+      const row = button.closest('tr');
+      row.remove();
+      updateTotal();
+    }
+  </script>
 
 </body>
 
