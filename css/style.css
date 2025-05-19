@@ -1004,4 +1004,115 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+/* Estilos generales para el carrito */
+.cart_section {
+    padding: 50px 0;
+    background-color: #f8f9fa; 
+}
+
+.cart_section .heading_container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cart_section h2 {
+    font-size: 2rem;
+    color: #343a40; /* Color de texto oscuro */
+    margin-bottom: 20px;
+}
+
+.cart_items {
+    margin-bottom: 20px;
+}
+
+.cart_items table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.cart_items th, .cart_items td {
+    padding: 15px;
+    border: 1px solid #dee2e6; /* Borde claro */
+}
+
+.cart_items th {
+    background-color: #e9ecef; /* Color de fondo para encabezados */
+    color: #495057; /* Color de texto para encabezados */
+}
+
+.cart_items td {
+    background-color: #ffffff; /* Color de fondo blanco */
+}
+
+.cart_items .product-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart_items .product-info img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.cart_items .quantity {
+    width: 60px;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid #ced4da; /* Borde claro */
+}
+
+.cart_items .price, .cart_items .subtotal {
+    font-weight: bold;
+    color: #28a745; /* Color verde para precios */
+}
+
+.total_price {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef; /* Color de fondo claro */
+    border: 1px solid #dee2e6; /* Borde claro */
+    text-align: right; /* Alinear texto a la derecha */
+}
+
+.total_price h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #343a40; /* Color de texto oscuro */
+}
+
+.btn_box {
+    margin-top: 20px;
+    text-align: center; /* Centrar el botón */
+}
+
+.btn_box a {
+    padding: 10px 20px;
+    background-color: #007bff; /* Color azul */
+    color: #fff; /* Color de texto blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Sin subrayado */
+    font-size: 1rem;
+}
+
+.btn_box a:hover {
+    background-color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+}
+
+.remove-item {
+    background-color: #dc3545; /* Color rojo */
+    color: #fff; /* Color de texto blanco */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-item:hover {
+    background-color: #c82333; /* Color rojo más oscuro al pasar el mouse */
+}
+
 /*# sourceMappingURL=style.css.map */

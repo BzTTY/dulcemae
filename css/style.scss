@@ -613,6 +613,116 @@ a:focus {
 
 // end about section
 
+.cart_section {
+  background: #222831; // Color de fondo oscuro
+  color: #ffffff; // Color de texto blanco
+
+  .heading_container {
+    text-align: center; // Centrar el encabezado
+    margin-bottom: 30px; // Espaciado inferior
+
+    h2 {
+      font-size: 2rem; // Tamaño de fuente del encabezado
+      margin-bottom: 20px; // Espaciado inferior
+    }
+  }
+
+  .cart_items {
+    margin-bottom: 20px; // Espaciado inferior
+
+    table {
+      width: 100%; // Ancho completo
+      border-collapse: collapse; // Colapsar bordes
+      border-spacing: 0;
+
+      th, td {
+        padding: 15px; // Espaciado interno
+        border: 1px solid #dee2e6; // Borde claro
+      }
+
+      th {
+        background-color: #ffbe33; // Color de fondo para encabezados
+        color: #222831; // Color de texto oscuro
+      }
+
+      td {
+        background-color: #ffffff; // Color de fondo blanco
+      }
+
+      .product-info {
+        display: flex; // Usar flexbox para alinear elementos
+        align-items: center; // Centrar verticalmente
+
+        img {
+          width: 50px; // Ancho de la imagen
+          height: 50px; // Alto de la imagen
+          margin-right: 10px; // Espaciado derecho
+        }
+      }
+
+      .quantity {
+        width: 60px; // Ancho del campo de cantidad
+        height: 35px; // Alto del campo de cantidad
+        padding: 5px; // Espaciado interno
+        border: 1px solid #ced4da; // Borde claro
+      }
+
+      .price, .subtotal {
+        font-weight: bold; // Negrita para precios
+        color: #28a745; // Color verde para precios
+      }
+    }
+  }
+
+  .total_price {
+    margin-top: 20px; // Espaciado superior
+    padding: 15px; // Espaciado interno
+    background-color: #ffbe33; // Color de fondo claro
+    border: 1px solid #dee2e6; // Borde claro
+    text-align: right; // Alinear texto a la derecha
+
+    h4 {
+      margin: 0; // Sin margen
+      font-size: 1.5rem; // Tamaño de fuente del total
+      color: #222831; // Color de texto oscuro
+    }
+  }
+
+  .btn_box {
+    margin-top: 20px; // Espaciado superior
+    text-align: center; // Centrar el botón
+
+    a {
+      padding: 10px 20px; // Espaciado interno
+      background-color: #28a745; // Color verde
+      color: #ffffff; // Color de texto blanco
+      border: none; // Sin borde
+      border-radius: 5px; // Bordes redondeados
+      cursor: pointer; // Cambiar cursor al pasar el mouse
+      text-decoration: none; // Sin subrayado
+      font-size: 1rem; // Tamaño de fuente
+
+      &:hover {
+        background-color: #218838; // Color verde más oscuro al pasar el mouse
+      }
+    }
+  }
+
+  .remove-item {
+    background-color: #dc3545; // Color rojo
+    color: #fff; // Color de texto blanco
+    padding: 5px 10px; // Espaciado interno
+    border: none; // Sin borde
+    border-radius: 5px; // Bordes redondeados
+    cursor: pointer; // Cambiar cursor al pasar el mouse
+
+    &:hover {
+      background-color: #c82333; // Color rojo más oscuro al pasar el mouse
+    }
+  }
+}
+
+
 // book section
 .book_section {
   position: relative;
