@@ -68,3 +68,84 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
+
+//funcion para mostrar/esconder las opciones especiales que vayan apareciendo segun lo elegido anteriormente
+//controlador=tipo de producto
+$('#controlador').change(function (e) {
+    var selected = $(e.currentTarget).val();
+    //aca el id de cada opcion
+    $('#tamanioTorta').hide();
+    $('#tipoTorta').hide();
+    $('#cremaTorta').hide();
+    $('#frutasTorta').hide();
+    $('#especialesTorta').hide();
+    $('#coberturaTorta').hide();
+
+    $('#cantidadGalleta').hide();
+
+    $('#tipoAlfajor').hide();
+    $('#cantidadAlfajor').hide();
+    
+    $('#tipoTarta').hide();
+
+    $('#tipoCheesecake').hide();
+
+    $('#tipoPie').hide();
+
+    $('#tamanioKuchen').hide();
+    $('#tipoKuchen').hide();
+
+    switch (selected) {
+        case "Torta":
+            $('#tamanioTorta').show();
+            $('#tipoTorta').show();
+            $('#cremaTorta').show();
+            $('#frutasTorta').show();
+            $('#especialesTorta').show();
+            $('#coberturaTorta').show();
+            break;
+
+        case "Galletas surtidas":
+            $('#cantidadGalleta').show();
+            break;
+
+        case "Alfajores":
+            $('#tipoAlfajor').show();
+            $('#cantidadAlfajor').show();
+            break;
+
+        case "Tarta":
+            $('#tipoTarta').show();
+            break;
+
+        case "Cheesecake":
+            $('#tipoCheesecake').show();
+            break;
+
+        case "Pie":
+            $('#tipoPie').show();
+            break;
+
+        case "Kuchen":
+            $('#tamanioKuchen').show();
+            $('#tipoKuchen').show();
+            break;
+
+        default:
+            break;
+    }
+})
+
+/*controlador para mostrar direccion*/
+$('#controlador2').change(function (e) {
+    var selected = $(e.currentTarget).val();
+    $('#direccionCliente').hide();
+
+    switch (selected) {
+        case "Envio":
+            $('#direccionCliente').show();
+            break;
+        default:
+            break;
+    }
+})
