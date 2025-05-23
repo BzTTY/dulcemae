@@ -64,6 +64,8 @@ git clone git clone https://github.com/BzTTY/webpage.github.io
 ## 🔗🍰 link de la pagina.
 [VER](https://bztty.github.io/webpage.github.io/index.html)
 
+## 🔗📋 link tareas asana.
+[VER](https://app.asana.com/1/1199948236653219/project/1210127285034543/gantt/1210127552780610)
 
 
 ## 🪪 Licencia
