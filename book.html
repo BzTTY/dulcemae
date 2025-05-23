@@ -141,52 +141,462 @@
     <!-- end header section -->
   </div>
 
-  <!-- book section -->
+ <!-- seccion de AGENDAR PEDIDO -->
   <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
         <h2>
-          Realizar Pedido
+          Agenda tu pedido
         </h2>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form action="https://formsubmit.co/gen.montero@duocuc.cl" method="POST">
               <div>
-                <input type="text" class="form-control" placeholder="Tu nombre" />
+                <input type="text" required class="form-control" name="Nombre" placeholder="Nombre completo" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Telefono" />
+                <input type="text" required class="form-control" name="Celular" placeholder="Número de celular" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Correo" />
+                <input type="email" class="form-control" name="Correo electrónico" placeholder="Correo electrónico" />
               </div>
+
+        <!--ELEGIR PRODUCTO ES EL CONTROLADOR DE LAS OPCIONES QUE APARECERAN SI SELECCIONAS CIERTOS PRODUCTOS-->
               <div>
-                <select class="form-control nice-select wide">
+                <select  id="controlador" name="Producto" class="form-control nice-select wide">
                   <option value="" disabled selected>
-                    Para cuantas Personas?
+                    Elegir producto
                   </option>
-                  <option value="">
-                    2
+                  <option value="Torta">
+                    Torta
                   </option>
-                  <option value="">
-                    3
+                  <option value="Galletas surtidas">
+                    Galletas surtidas
                   </option>
-                  <option value="">
-                    4
+                  <option value="Alfajores">
+                    Alfajores
                   </option>
-                  <option value="">
-                    5
+                  <option value="Tarta">
+                    Tartas (30cm diámetro)
+                  </option>
+                  <option value="Cheesecake">
+                    Cheesecakes (30cm diámetro)
+                  </option>
+                  <option value="Pie">
+                    Pie
+                  </option>
+                  <option value="Kuchen">
+                    Kuchen
                   </option>
                 </select>
               </div>
-              <div>
-                <input type="date" class="form-control">
+
+        <!--OPCION TORTA:-->
+              <!--TAMAÑO-->
+              <div id="tamanioTorta" style="display: none;">
+                  <select name="Tamaño" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tamaño
+                  </option>
+                  <option value="15 personas">
+                    15 personas
+                  </option>
+                  <option value="20 personas">
+                    20 personas
+                  </option>
+                  <option value="25 personas">
+                    25 personas
+                  </option>
+                  <option value="30 personas">
+                    30 personas
+                  </option>
+                  <option value="35 personas">
+                    35 personas
+                  </option>
+                  <option value="40 personas">
+                    40 personas
+                  </option>
+                  </select>
               </div>
+
+              <!--TIPO TORTA-->
+              <div id="tipoTorta" style="display: none;">
+                  <select name="Tipo de torta" class="form-control nice-select wide">
+                    <option value="" disabled selected>
+                    Tipo de torta
+                  </option>
+                  <option value="Hojarasca">
+                    Hojarasca
+                  </option>
+                  <option value="Bizcocho húmedo de chocolate ">
+                    Bizcocho húmedo de chocolate 
+                  </option>
+                  <option value="Bizcocho tradicional ">
+                    Bizcocho tradicional 
+                  </option>
+                  <option value="Bizcocho amapola">
+                    Bizcocho amapola
+                  </option>
+                  <option value="Bizcocho vainilla">
+                    Bizcocho vainilla
+                  </option>
+                  <option value="Bizcocho chocolate">
+                    Bizcocho chocolate
+                  </option>
+                  </select>
+              </div>
+
+              <!--RELLENO CREMA-->
+              <div id="cremaTorta" style="display: none;">
+                  <select name="Crema de relleno" class="form-control nice-select wide">
+                    <option value="" disabled selected>
+                    Crema de relleno
+                  </option>
+                  <option value="Crema pastelera">
+                    Crema Pastelera
+                  </option>
+                  <option value="Crema de Moka ">
+                    Crema de Moka
+                  </option>
+                  <option value="Crema de Frambuesa ">
+                    Crema de Frambuesa
+                  </option>
+                  <option value="Crema de Manjar">
+                    Crema de Manjar
+                  </option>
+                  <option value="Crema de Naranja">
+                    Crema de Naranja
+                  </option>
+                  <option value="Crema de Maracuyá">
+                    Crema de Maracuyá
+                  </option>
+                  <option value="Ganache de Chocolate">
+                    Ganache de Chocolate
+                  </option>
+                  </select>
+              </div>
+
+             <!--RELLENO FRUTAS-->
+             <div id="frutasTorta" style="display: none;">
+                  <select name="Relleno frutas/otros" class="form-control nice-select wide">
+                    <option value="" disabled selected>
+                    Relleno frutas y otros
+                  </option>
+                  <option value="Lúcuma">
+                    Lúcuma
+                  </option>
+                  <option value="Frambuesa">
+                    Frambuesa
+                  </option>
+                  <option value="Frutos rojos">
+                    Frutos rojos
+                  </option>
+                  <option value="Durazno">
+                    Durazno
+                  </option>
+                  <option value="Piña">
+                    Piña
+                  </option>
+                  <option value="Manjar">
+                    Manjar
+                  </option>
+                  <option value="Ninguno">
+                    Ninguno
+                  </option>
+                  </select>
+              </div>
+
+              <!--INGREDIENTES ESPECIALES-->
+             <div id="especialesTorta" style="display: none;">
+                  <select name="Ingredientes especiales" class="form-control nice-select wide">
+                    <option value="" disabled selected>
+                    Ingredientes especiales (costo extra)
+                  </option>
+                  <option value="Nutella">
+                    Nutella
+                  </option>
+                  <option value="Nueces">
+                    Nueces
+                  </option>
+                  <option value="Almendras">
+                    Almendras
+                  </option>
+                  <option value="Ninguno">
+                    Ninguno
+                  </option>
+                  </select>
+              </div>
+
+              <!--COBERTURA-->
+             <div id="coberturaTorta" style="display: none;">
+                  <select name="Cobertura" class="form-control nice-select wide">
+                    <option value="" disabled selected>
+                    Cobertura
+                  </option>
+                  <option value="Crema vegetal">
+                    Crema Vegetal
+                  </option>
+                  <option value="Crema Tradicional">
+                    Crema Tradicional
+                  </option>
+                  <option value="Ganach">
+                    Ganach (costo extra)
+                  </option>
+                  </select>
+              </div>
+        <!--fin opcion torta-->
+
+        <!--OPCION GALLETA:-->
+              <!--CANTIDAD GALLETA-->
+              <div id="cantidadGalleta" style="display: none;">
+                  <select name="Cantidad de Galletas" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Cantidad
+                  </option>
+                  <option value="250gr">
+                    250gr
+                  </option>
+                  <option value="500gr">
+                    500gr
+                  </option>
+                  <option value="1000k">
+                    1000k
+                  </option>
+                  </select>
+              </div>
+
+          <!--OPCION ALFAJOR:-->
+              <!--TIPO DE ALFAJOR-->
+              <div id="tipoAlfajor" style="display: none;">
+                  <select name="Tipo" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tipo de alfajor
+                  </option>
+                  <option value="Alfajor Pie de Limon">
+                    Alfajor Pie de Limon
+                  </option>
+                  <option value="Alfajor de Oreo">
+                    Alfajor de Oreo
+                  </option>
+                  <option value="Alfajor de Manjar">
+                    Alfajor de Manjar
+                  </option>
+                  <option value="Alfajor de Manjar Chip">
+                    Alfajor de Manjar Chip
+                  </option>
+                  <option value="Alfajor de Manjar y Nueces">
+                    Alfajor de Manjar y Nueces
+                  </option>
+                  <option value="Alfajor de Mantequilla de Mani">
+                    Alfajor de Mantequilla de Mani
+                  </option>
+                  <option value="Alfajor de Mantequilla de Mani y Frambuesa">
+                    Alfajor de Mantequilla de Mani y Frambuesa
+                  </option>
+                  <option value="Alfajor de Trufa">
+                    Alfajor de Trufa
+                  </option>
+                  <option value="Alfajor de Maracuyá">
+                    Alfajor de Maracuyá
+                  </option>
+                  <option value="Alfajor de Frambuesa">
+                    Alfajor de Frambuesa
+                  </option>
+                  <option value="Alfajor de Trufa">
+                    Alfajor de Trufa
+                  </option>
+                  <option value="Alfajor de Chocolate">
+                    Alfajor de Chocolate
+                  </option>
+                  <option value="Alfajor de Nutella">
+                    Alfajor de Nutella
+                  </option>
+                  </select>
+              </div>
+
+              <!--CANTIDAD ALFAJOR-->
+              <div id="cantidadAlfajor" style="display: none;">
+                  <select name="Cantidad alfajores" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Cantidad
+                  </option>
+                  <option value="10">
+                    10
+                  </option>
+                  <option value="15">
+                    15
+                  </option>
+                  <option value="20">
+                    20
+                  </option>
+                  <option value="25">
+                    25
+                  </option>
+                  <option value="30">
+                    30
+                  </option>
+                  </select>
+              </div>
+
+          <!--OPCION TARTA:-->
+              <!--TIPO DE TARTA-->
+              <div id="tipoTarta" style="display: none;">
+                  <select name="Tipo de tarta" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tipo de tarta
+                  </option>
+                  <option value="Tartaleta">
+                    Tartaleta
+                  </option>
+                  <option value="Tarta de Prestigio">
+                    Tarta de Prestigio
+                  </option>
+                  <option value="Tarta de Oreo">
+                    Tarta de Oreo
+                  </option>
+                   <option value="Tarta de Manjarate">
+                    Tarta de Manjarate
+                  </option>
+                   <option value="Tarta Cuatro Leches">
+                    Tarta Cuatro Leches
+                  </option>
+                   <option value="Tarta Bon Bon">
+                    Tarta Bon Bon
+                  </option>
+                  </select>
+              </div>
+
+          <!--OPCION CHEESECAKE:-->
+              <!--TIPO DE CHEESECAKE-->
+              <div id="tipoCheesecake" style="display: none;">
+                  <select name="Tipo de Cheesecake" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tipo de Cheesecake
+                  </option>
+                  <option value="Cheesecake de Mango">
+                    Cheesecake de Mango
+                  </option>
+                  <option value="Cheesecake de Frutos Rojos">
+                    Cheesecake de Frutos Rojos
+                  </option>
+                  <option value="Cheesecake de Selva Negra">
+                    Cheesecake de Selva Negra
+                  </option>
+                  <option value="Cheesecake de Maracuyá">
+                    Cheesecake de Maracuyá
+                  </option>
+                  <option value="Cheesecake de Oreo">
+                    Cheesecake de Oreo
+                  </option>
+                  </select>
+              </div>
+
+          <!--OPCION PIE:-->
+              <!--CANTIDAD-->
+              <div id="tipoPie" style="display: none;">
+                  <select name="Tipo de Pie" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tipo de Pie
+                  </option>
+                  <option value="Pie de Limón">
+                    Pie de Limón
+                  </option>
+                  <option value="Pie de Limón y Frambuesa">
+                    Pie de Limón y Frambuesa
+                  </option>
+                  <option value="Pie de Maracuyá">
+                    Pie de Maracuyá
+                  </option>
+                  <option value="Pie de Arándano">
+                    Pie de Arándano
+                  </option>
+                  </select>
+              </div>
+
+          <!--OPCION KUCHEN:-->
+              <!--TAMAÑO KUCHEN-->
+              <div id="tamanioKuchen" style="display: none;">
+                  <select name="Tamaño del Kuchen" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tamaño
+                  </option>
+                  <option value="Normal">
+                    Normal
+                  </option>
+                  <option value="Familiar">
+                    Familiar
+                  </option>
+                  </select>
+              </div>
+
+              <!--TIPO KUCHEN-->
+              <div id="tipoKuchen" style="display: none;">
+                  <select name="Tipo de Kuchen" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    Tipo de Kuchen
+                  </option>
+                  <option value="Kuchen de miga, crema de queso philadelphia y frambuesa">
+                    Kuchen de miga, crema de queso philadelphia y frambuesa
+                  </option>
+                  <option value="Kuchen de crema sureño">
+                    Kuchen de crema sureño
+                  </option>
+                  <option value="Kuhen de crema pastelera y frutillas">
+                    Kuhen de crema pastelera y frutillas
+                  </option>
+                  <option value="Kuchen nuez">
+                    Kuchen de nuez
+                  </option>
+                  <option value="Kuchen nuez y almendra">
+                    Kuchen nuez y almendra
+                  </option>
+                  <option value="Kuchen nuez frambuesa">
+                    Kuchen nuez frambuesa
+                  </option>
+                  <option value="Kuchen nuez manzana">
+                    Kuchen nuez manzana
+                  </option>
+                  <option value="Kuchen navideño">
+                    Kuchen navideño
+                  </option>
+                  <option value="Kuchen de miga, crema pastelera y manzana">
+                    Kuchen de miga, crema pastelera y manzana
+                  </option>
+                  <option value="Kuchen de miga, rema pastelera y frambuesa">
+                    Kuchen de miga, rema pastelera y frambuesa
+                  </option>
+                  </select>
+              </div>
+
+              <div>
+                  <select id="controlador2" name="Envio" class="form-control nice-select wide" >
+                    <option value="" disabled selected>
+                    ¿Cómo desea recibir su pedido?
+                  </option>
+                  <option value="Retiro">
+                    Retiro
+                  </option>
+                  <option value="Envio">
+                    Envío a domicilio (Costo adicional)
+                  </option>
+                  </select>
+              </div>
+
+              <!--en caso de envio necesitaremos la direccion-->
+              <div id="direccionCliente" style="display: none;">
+                <input type="text" class="form-control" name="Dirección" placeholder="Dirección" />
+              </div>
+
+              <div>
+                <label id="pedidoListo" for="Fecha">¿Cuándo desea que este listo su pedido?</label>
+                <input type="date" class="form-control" name="Fecha">
+              </div>
+
               <div class="btn_box">
-                <button>
-                  Realizar Pedido
+                <button type="submit">
+                  Agendar
                 </button>
               </div>
             </form>
@@ -200,7 +610,8 @@
       </div>
     </div>
   </section>
-  <!-- end book section -->
+  <!-- fin seccion agendar pedido -->
+
 
   <!-- footer section -->
   <footer class="footer_section">
@@ -211,19 +622,17 @@
             <h4>
               Contactanos
             </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <!--link de la ubicacion-->
+             <div class="contact_link_box">
+              <a href="https://www.google.com/maps/place/Plaza+De+Alerce/@-41.3968119,-72.9062457,17z/data=!3m1!4b1!4m6!3m5!1s0x9618256138d95f47:0x4fff2c1866ed4df6!8m2!3d-41.396816!4d-72.9036708!16s%2Fg%2F11crzwnx77?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
                   Ubicación
                 </span>
               </a>
-              <a href="">
-                <!-- link de whatsapp-->
+              <a href="https://api.whatsapp.com/message/MRQ3F3HJOZ4MJ1?autoload=1&app_absent=0">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Teléfono +569 79652048
+                  +56 9 7956 2048
                 </span>
               </a>
               <a href="">
@@ -245,20 +654,8 @@
               Mi sueño es que mis productos lleguen a más personas. Aspiro a que en el futuro, mis creaciones estén disponibles en muchas pastelerías en Chile y que más familias puedan disfrutar de lo que hago con tanto cariño
             </p>
             <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.tiktok.com/@dulcemaeoficial?lang=es">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.tiktok.com/@dulcemaeoficial?lang=es">
-                <i class="bi bi-tiktok" aria-hidden="true"></i>
-              </a>
               <a href="https://www.instagram.com/dulcemaeoficial/">
                 <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
               </a>
             </div>
           </div>
