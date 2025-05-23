@@ -59,6 +59,10 @@ Nuestro propósito como equipo es implementar una plataforma en la que se pueda 
 git clone git clone https://github.com/BzTTY/webpage.github.io
 ...
 ```
+## 🔗🍰 link de la pagina.
+[VER](https://bztty.github.io/webpage.github.io/index.html)
+
+
 
 ## 🪪 Licencia
 
