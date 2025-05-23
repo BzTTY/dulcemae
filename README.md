@@ -50,6 +50,8 @@ Nuestro propósito como equipo es implementar una plataforma en la que se pueda 
 |semana 4 |avances figma                 |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%204)    |
 |semana 5 |comienzo del codigo           |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%205)    |
 |semana 6 |creacion carta Gantt          |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%206)    |
+|semana 7 |creacion de la pagina         |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%207/DulceMae)|
+|semana 8 |prototipo funcional de la pagina|[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%208)  |
 ---
 
 ## ⬇️ Instalacion.
