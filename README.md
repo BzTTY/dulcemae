@@ -4,7 +4,7 @@
 ---
 ## 📋 Tabla de contenidos
 -[Descripcion-del-proyecto](#-descripcion-del-proyecto)
--[Integrantes](#-integrantes)
+-[Integrantes](#-ilsntegrantes)
 -[Tecnologias](#-tecnologias)
 -[Avances-Semanales](#-avances-semanales)
 -[instalacion](#-instalacion)
@@ -52,20 +52,54 @@ Nuestro propósito como equipo es implementar una plataforma en la que se pueda 
 |semana 6 |creacion carta Gantt          |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%206)    |
 |semana 7 |creacion de la pagina         |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%207/DulceMae)|
 |semana 8 |prototipo funcional de la pagina|[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%208)  |
+|semana 9 |presentacion del proyecto     |                                                                                  |
+|semana 10|...                           |                                                                                  |
 ---
 
 ## ⬇️ Instalacion.
 
-1. Clonar el repositorio
-``` bash
-git clone git clone https://github.com/BzTTY/webpage.github.io
+✅ Requisitos Previos
+Antes de comenzar, asegúrate de tener instalado:
+
+- Git
+
+- Python (necesario el repositorio es un proyecto de Python)
+
+- pip (el gestor de paquetes de Python)
+
+- visual studio code
+
+
+🔧 Paso a Paso para clonar e instalar
+
+- Abrir GitHub Bash
+- pegar el codigo de sale a continuacion 
+
+ ``` bash
+git clone git clone https://github.com/BzTTY/dulcemae.git
 ...
 ```
+Esto descargará el proyecto en una carpeta llamada dulcemae.
+ 
+ Arrastrar la capeta dentro de Visual Studio Code
+
+ dar doble click sobre archivo index para visualizar 
+
+---
+
+
+
+
+
 ## 🔗🍰 link de la pagina.
 [VER](https://bztty.github.io/webpage.github.io/index.html)
 
+---
+
 ## 🔗📋 link tareas asana.
 [VER](https://app.asana.com/1/1199948236653219/project/1210127285034543/gantt/1210127552780610)
+
+---
 
 
 ## 🪪 Licencia
