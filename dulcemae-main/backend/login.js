@@ -3,9 +3,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const mensajeLogin = document.getElementById("mensajeLogin");
 
   try {
-    const response = await fetch("https://dulce-mae-api.onrender.com/api/usuarios/login", {
+    const response = await fetch("https://dulce-mae-api.onrender.com/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -18,14 +19,21 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     if (response.ok) {
       // Guardar el token en localStorage
       localStorage.setItem("token", data.token);
-
-      // Redireccionar a la página de inicio o dashboard
-      window.location.href = "inicio.html"; // Puedes cambiar esto por tu página principal
+      localStorage.setItem("nombreUsuario", data.nombre);
+      mensajeLogin.innerText = "¡Inicio de sesión exitoso! Redirigiendo...";
+      mensajeLogin.style.color = "green";
+      // Redireccionar a la página de inicio
+      setTimeout(() => {
+      window.location.href = "inicio.html";
+      }, 2000);
     } else {
-      alert("Error al iniciar sesión: " + data.message);
+      mensajeLogin.innerText = "Error al iniciar sesión: " + (data.message || "Intenta nuevamente.");
+      mensajeLogin.style.color = "red";
     }
   } catch (error) {
     console.error("Error:", error);
-    alert("Ocurrió un error al intentar iniciar sesión.");
+    mensajeLogin.innerText = "Ocurrió un error al intentar iniciar sesión.";
+    mensajeLogin.style.color = "red";
   }
 });
+// Aquí se maneja el evento de envío del formulario de inicio de sesión
