@@ -114,36 +114,35 @@
   </div>
 
   <!-- sección de inicio de sesión -->
-  <section class="book_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Inicia Sesión
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="email" class="form-control" placeholder="Correo electrónico" required />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required />
-              </div>
-              <div class="btn_box">
-                <button>
-                  Iniciar Sesión
-                </button>
-              </div>
-            </form>
-          </div>
+<section class="book_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>Inicia Sesión</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <form id="loginForm">
+            <div>
+              <input type="email" id="email" class="form-control" placeholder="Correo electrónico" required />
+            </div>
+            <div>
+              <input type="password" id="password" class="form-control" placeholder="Contraseña" required />
+            </div>
+            <!-- Aquí se mostrará el mensaje -->
+            <div id="mensajeLogin" style="margin-top: 10px;"></div>
+            <div class="btn_box">
+              <button type="submit">Iniciar Sesión</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </section>
-  <!-- end sección de inicio de sesión -->
-
+  </div>
+</section>
+<!-- end Sección de inicio de sesión -->
+ <!-- Enlazar el archivo JS -->
+<script src="backend/login.js"></script>  
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -244,7 +243,7 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
-
+<script src="backend/login.js"></script>
 </body>
 
 </html>

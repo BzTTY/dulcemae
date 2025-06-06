@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login
+// Login - MODIFICADO para incluir información del usuario
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -41,7 +41,18 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign({ id: usuario._id }, process.env.JWT_SECRET, { expiresIn: "2h" });
 
-    res.json({ token });
+    // ✅ INCLUIR INFORMACIÓN DEL USUARIO EN LA RESPUESTA
+    res.json({ 
+      message: "Login exitoso",
+      token: token,
+      nombre: usuario.nombre, // ✅ El frontend espera esto
+      user: {
+        id: usuario._id,
+        nombre: usuario.nombre,
+        email: usuario.email,
+        telefono: usuario.telefono
+      }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al iniciar sesión." });
@@ -49,4 +60,3 @@ router.post("/login", async (req, res) => {
 });
 
 module.exports = router;
-// Exportamos el router para usarlo en el servidor principal  

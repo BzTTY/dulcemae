@@ -6,7 +6,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const mensajeLogin = document.getElementById("mensajeLogin");
 
   try {
-    const response = await fetch("https://dulce-mae-api.onrender.com/api/users/login", {
+    const response = await fetch("https://dulce-mae-api.onrender.com/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
