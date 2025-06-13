@@ -1299,6 +1299,37 @@ a:focus {
 
 /*# Fin de register section */
 
+/*pagina de producto*/
+.disponibilidad{
+  padding: 10px 30px 4px;
+  color: #ffffff;
+  background-color: #d15252;
+  margin-bottom: 0.6rem;
+}
+
+#tituloProducto {
+  font-size: 50px;
+  color: #000000;
+}
+
+#precioProducto {
+  color: #bd2f2f;
+  font-size: 25px;
+}
+
+.tamanioContenedor{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tamanioContenedor div{
+  border: solid 2px #43281C;
+  padding: 5px 50px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /* seccion del footer*/
 .footer_section {
