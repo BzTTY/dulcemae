@@ -1304,12 +1304,13 @@ a:focus {
   padding: 10px 30px 4px;
   color: #ffffff;
   background-color: #d15252;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 #tituloProducto {
   font-size: 50px;
   color: #000000;
+  margin-bottom: 1rem;
 }
 
 #precioProducto {
@@ -1317,19 +1318,77 @@ a:focus {
   font-size: 25px;
 }
 
-.tamanioContenedor{
+.botoncitos{
   display: flex;
   flex-direction: row;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
-.tamanioContenedor div{
-  border: solid 2px #43281C;
-  padding: 5px 50px;
-  text-decoration: none;
-  cursor: pointer;
+.botoncitos button{
+  border: solid 2px;
+  width: 17rem;
+
 }
+
+.botoncitos button:hover{
+  border: solid 2px #d15252;
+  color:  #d15252;
+}
+
+
+
+.pagina_section {
+  background: #f1f2f3;
+  color: #000000;
+}
+
+.pagina_section .row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagina_section .img-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pagina_section .img-box img {
+  width: 100%;
+  max-width: 445px;
+  position: relative;
+  z-index: 2;
+}
+
+.pagina_section .detail-box p {
+  margin-top: 15px;
+}
+
+.pagina_section .detail-box a {
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: var(---fondoBoton);
+  color: var(---textoBoton);
+  border-radius: 45px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: none;
+  margin-top: 15px;
+}
+
+.pagina_section .detail-box a:hover {
+  background-color: var(---hoverBoton);
+}
+/*fin seccion paginas*/
+
 
 /* seccion del footer*/
 .footer_section {
