@@ -1333,12 +1333,11 @@ a:focus {
 
 }
 
-.botoncitos button:hover{
-  border: solid 2px #d15252;
-  color:  #d15252;
+.botoncitos button:focus{
+  border: solid 3px #000000;
+  color: #000000;
+  font-weight: bold;
 }
-
-
 
 .pagina_section {
   background: #f1f2f3;
