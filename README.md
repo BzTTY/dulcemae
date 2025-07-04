@@ -38,7 +38,7 @@ Nuestro propósito como equipo es implementar una plataforma en la que se pueda 
  ![alt text](https://cdn.iconscout.com/icon/free/png-256/free-github-10516009-8630395.png?f=webp)
 
 - MONGODB. para la base de datos
- ![alt text] (https://victorroblesweb.es/wp-content/uploads/2016/11/mongodb.png)
+ ![alt text](https://victorroblesweb.es/wp-content/uploads/2016/11/mongodb.png)
 
 ---
 ## 🚀 Avances Semanales.
