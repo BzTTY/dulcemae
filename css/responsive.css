@@ -36,6 +36,37 @@ padding-left: 0;
     margin-right: 0;
     margin-bottom: 15px;
   }
+   #tituloProducto{
+    align-self: center;
+  }
+
+  #precioProducto{
+    align-self: center;
+  }
+
+   #tamanio{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .disponibilidad{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .botoncitos{
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .botoncitos a{
+    justify-content: center;
+  }
+
+  .botoncitoCompra{
+    justify-self: center;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -58,11 +89,45 @@ padding-left: 0;
     margin-right: 15px;
     margin-bottom: 0;
   }
+
+  #tituloProducto{
+    align-self: center;
+  }
+
+  #precioProducto{
+    align-self: center;
+  }
+
+   #tamanio{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .disponibilidad{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .botoncitos{
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .botoncitos a{
+    justify-content: center;
+  }
+
+  .botoncitoCompra{
+    justify-self: center;
+  }
 }
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+  
+}
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+}
 
 @media (max-width: 430px) {
   .offer_section .box {
@@ -74,11 +139,45 @@ padding-left: 0;
     margin-right: 0;
     margin-bottom: 15px;
   }
+   #tituloProducto{
+    align-self: center;
+  }
+
+  #precioProducto{
+    align-self: center;
+  }
+
+   #tamanio{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .disponibilidad{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .botoncitos{
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .botoncitos a{
+    justify-content: center;
+  }
+
+  .botoncitoCompra{
+    justify-self: center;
+  }
+  
+  
+  
 }
 
 @media (max-width: 376px) {
   .slider_section .detail-box h1 {
     font-size: 3rem;
+    
   }
 }
 
@@ -86,6 +185,7 @@ padding-left: 0;
   .container {
     max-width: 1170px;
   }
+  
 }
 
 
@@ -94,4 +194,36 @@ padding-left: 0;
     float: left;
     width: 50%;
   }
+  
+  #tituloProducto{
+    align-self: center;
+  }
+
+  #precioProducto{
+    align-self: center;
+  }
+
+   #tamanio{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .disponibilidad{
+    margin-top: 1rem;
+    align-self: center;
+  }
+
+  .botoncitos{
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .botoncitos a{
+    justify-content: center;
+  }
+
+  .botoncitoCompra{
+    justify-self: center;
+  }
+
 }
