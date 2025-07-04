@@ -11,13 +11,18 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <link rel="shortcut icon" href="/images/favicon.png" type="">
 
-  <title> DulceMae - Registro</title>
+  <title>Torta de Durazno</title>
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- bootstrap importacion-->
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+  <link rel="stylesheet" href="../../css/style.css.map">
+  <link rel="stylesheet" href="../../css/style.scss">
 
+  <link rel="stylesheet" href="../../js/bootstrap.js">
+  <link rel="stylesheet" href="../../js/custom.js">
+  <link rel="stylesheet" href="../../js/jquery-3.4.1.min.js">
   <!-- owl slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   
@@ -25,12 +30,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   
   <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="/css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="/css/responsive.css" rel="stylesheet" />
+
+ 
 
 </head>
 
@@ -38,13 +45,13 @@
 
   <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+      <img src="/images/hero-bg.jpg" alt="">
     </div>
-    <!-- header section starts -->
+    <!-- seccion header -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="../index.html">
             <span>
               Dulce Mae
             </span>
@@ -57,23 +64,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
+                <a class="nav-link" href="../index.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="menu.html">Catalogo</a>
+                <a class="nav-link" href="../menu.html">Catalogo</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="register.html">Sobre Nosotros</a>
+                <a class="nav-link" href="../about.html">Sobre Nosotros</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="book.html">Pedido</a>
+            <li class="nav-item">
+                <a class="nav-link" href="../book.html">Pedido</a>
               </li>
             </ul>
-            <div class="user_option active">
-              <a href="" class="user_link">
+            <div class="user_option">
+              <a href="../register.html" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
-              <a class="cart_link" href="cart.html">
+              <a class="cart_link" href="../cart.html">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -102,58 +109,73 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="login.html" class="order_online">
-                Iniciar Sesion
+              <a href="../register.html" class="order_online">
+                Registrarme
               </a>
             </div>
           </div>
         </nav>
       </div>
     </header>
-    <!-- end header section -->
+    <!-- fin del header -->
   </div>
 
-  <!-- sección de registro -->
-  <section class="book_section layout_padding">
+  <!-- sección descripcion producto + imagen -->
+  <section class="pagina_section layout_padding" id="paginas">
     <div class="container">
-      <div class="heading_container">
-        <h2>
-          Registra tu cuenta
-        </h2>
-      </div>
       <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="/images/f1.png" alt="">
+          </div>
+        </div>
         <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
+          <div class="detail-box">
+            <div class="heading_container">
+              <div class="disponibilidad">
+                <h6>Disponible desde 72. hrs hábiles</h6>
+              </div>
+              
+              <h1 id="tituloProducto">
+                Torta de Durazno
+              </h1>
+              <h1 id="precioProducto">$26.000 – $46.000</h1>
+              <p>Disfruta de nuestra deliciosa Torta de Bizcocho Artesanal, rellena con nuestra mermelada casera de durazno con trocitos. Cada rebanada es un festín de sabores naturales y texturas.</p>
+              <h1 id="tamanio">Tamaño</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Nombre completo" required />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Número de celular" required />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Correo electrónico" required />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Confirmar Contraseña" required />
-              </div>
-              <div class="btn_box">
-                <button>
-                  Registrarse
-                </button>
-              </div>
-            </form>
+        <div class="botoncitos">
+          <div>
+            <button>4 personas</button>
+          </div>
+          <div>
+            <button>8 personas</button>
+          </div>
+          <div>
+            <button>15 personas</button>
+          </div>
+          <div>
+            <button>20 personas</button>
+          </div>
+          <div>
+            <button>25-30 personas</button>
+          </div>
+          <div>
+            <button>35-40 personas</button>
+          </div>
+        </div>  
+        <div class="botoncitoCompra">
+          <a href="../cart.html">
+          Compra ahora
+        </a>
+          </div>    
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- end sección de registro -->
-
   
+
+
 
   <!-- footer section -->
   <footer class="footer_section">
@@ -227,11 +249,11 @@
   <!-- footer section -->
 
   <!-- jQuery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="../js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
+  <script src="../../js/bootstrap.js"></script>
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <!-- isotope js -->
@@ -242,8 +264,11 @@
   <script src="js/custom.js"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
+  <!-- End Google aaa -->
 
 </body>
 
 </html>
+
+
+
