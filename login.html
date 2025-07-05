@@ -32,6 +32,28 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
+  <style>
+    /* Estilos básicos para los mensajes de error/éxito */
+    #messageContainer .alert-success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+    #messageContainer .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+  </style>
+
 </head>
 
 <body class="sub_page">
@@ -124,15 +146,18 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form id="loginForm"> 
+              
+              <div id="messageContainer" style="display: none; margin-bottom: 15px;"></div>
+
               <div>
-                <input type="email" class="form-control" placeholder="Correo electrónico" required />
+                <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required />
+                <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required />
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit">
                   Iniciar Sesión
                 </button>
               </div>
@@ -245,9 +270,74 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
 
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const messageContainer = document.getElementById('messageContainer');
+    
+    // URL base de la API desplegada en Render
+    const API_BASE_URL = 'https://dulcemae.onrender.com';
+
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault(); // Evita el envío tradicional del formulario
+
+      // Limpiar mensajes anteriores
+      messageContainer.innerHTML = '';
+      messageContainer.style.display = 'none';
+
+      const correo = document.getElementById('correo').value.trim();
+      const contrasena = document.getElementById('contrasena').value;
+
+      if (!correo || !contrasena) {
+        mostrarMensaje('Por favor, ingresa tu correo y contraseña.', 'danger');
+        return;
+      }
+
+      const submitButton = loginForm.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Iniciando...';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ correo, contrasena }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          mostrarMensaje(data.message || `Error ${response.status}: ${data.error || response.statusText}`, 'danger');
+        } else {
+          mostrarMensaje(data.message || '¡Inicio de sesión exitoso! Redirigiendo...', 'success');
+          
+          // Guardar el token en localStorage
+          if (data.token) {
+            localStorage.setItem('userToken', data.token);
+          }
+          
+          loginForm.reset();
+
+          // Redirigir al index o a la página principal después de un breve retraso
+          setTimeout(() => {
+            window.location.href = 'index.html'; // O a la página que desees
+          }, 1500); 
+        }
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        mostrarMensaje('Ocurrió un error al intentar iniciar sesión. Por favor, intenta de nuevo.', 'danger');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Iniciar Sesión';
+      }
+    });
+
+    function mostrarMensaje(mensaje, tipo) {
+      messageContainer.innerHTML = `<div class="alert alert-${tipo}" role="alert">${mensaje}</div>`;
+      messageContainer.style.display = 'block';
+    }
+  </script>
 </body>
 
 </html>
-
-
-
