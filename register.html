@@ -32,6 +32,28 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
+  <style>
+    /* Estilos básicos para los mensajes de error/éxito */
+    #messageContainer .alert-success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+    #messageContainer .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+  </style>
+
 </head>
 
 <body class="sub_page">
@@ -63,14 +85,14 @@
                 <a class="nav-link" href="menu.html">Catalogo</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="register.html">Sobre Nosotros</a>
+                <a class="nav-link" href="about.html">Sobre Nosotros</a> 
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="book.html">Pedido</a>
               </li>
             </ul>
-            <div class="user_option active">
-              <a href="" class="user_link">
+            <div class="user_option">
+              <a href="login.html" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="cart.html">
@@ -124,24 +146,27 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form id="registerForm"> 
+              
+              <div id="messageContainer" style="display: none; margin-bottom: 15px;"></div>
+
               <div>
-                <input type="text" class="form-control" placeholder="Nombre completo" required />
+                <input type="text" id="nombre_completo" class="form-control" placeholder="Nombre completo" required />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Número de celular" required />
+                <input type="text" id="celular" class="form-control" placeholder="Número de celular" required />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Correo electrónico" required />
+                <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required />
+                <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Confirmar Contraseña" required />
+                <input type="password" id="confirmar_contrasena" class="form-control" placeholder="Confirmar Contraseña" required />
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit">
                   Registrarse
                 </button>
               </div>
@@ -152,8 +177,6 @@
     </div>
   </section>
   <!-- end sección de registro -->
-
-  
 
   <!-- footer section -->
   <footer class="footer_section">
@@ -178,7 +201,6 @@
                 </span>
               </a>
               <a href="">
-                <!-- link de correo-->
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
                   dulcemaeoficial@gmail.com
@@ -241,8 +263,100 @@
   <!-- custom js -->
   <script src="js/custom.js"></script>
   <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=myMap"></script> -->
+
+  <script>
+    // El código JavaScript para manejar el formulario de registro irá aquí
+    const registerForm = document.getElementById('registerForm');
+const messageContainer = document.getElementById('messageContainer');
+
+registerForm.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+
+  // Limpiar mensajes anteriores
+  messageContainer.innerHTML = '';
+  messageContainer.style.display = 'none';
+
+  // Obtener los valores de los campos
+  const nombre_completo = document.getElementById('nombre_completo').value.trim();
+  const celular = document.getElementById('celular').value.trim();
+  const correo = document.getElementById('correo').value.trim();
+  const contrasena = document.getElementById('contrasena').value;
+  const confirmar_contrasena = document.getElementById('confirmar_contrasena').value;
+
+  // Validaciones básicas en el frontend
+  if (!nombre_completo || !celular || !correo || !contrasena || !confirmar_contrasena) {
+    mostrarMensaje('Por favor, completa todos los campos.', 'danger');
+    return;
+  }
+
+  if (contrasena !== confirmar_contrasena) {
+    mostrarMensaje('Las contraseñas no coinciden.', 'danger');
+    return;
+  }
+
+  if (contrasena.length < 6) {
+    mostrarMensaje('La contraseña debe tener al menos 6 caracteres.', 'danger');
+    return;
+  }
+
+  // Deshabilitar el botón mientras se envía para evitar envíos múltiples
+  const submitButton = registerForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = 'Registrando...'; // Opcional: cambiar texto del botón
+
+  try {
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nombre_completo,
+        celular,
+        correo,
+        contrasena,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Si la respuesta no es OK (ej. 400, 401, 500), muestra el mensaje de error de la API
+      // El backend ya debería enviar un objeto con una propiedad 'message'
+      mostrarMensaje(data.message || `Error ${response.status}: ${data.error || response.statusText}`, 'danger');
+    } else {
+      // Registro exitoso
+      mostrarMensaje(data.message || '¡Registro exitoso! Redirigiendo...', 'success');
+      // Opcional: guardar el token si el backend lo devuelve directamente en el registro
+      // if (data.token) { 
+      //   localStorage.setItem('userToken', data.token);
+      // }
+      
+      // Limpiar el formulario
+      registerForm.reset();
+
+      // Redirigir al usuario a la página de login o a donde desees después de un breve retraso
+      setTimeout(() => {
+        window.location.href = 'login.html'; // Cambia 'login.html' si quieres redirigir a otro lado
+      }, 2000); // 2 segundos de retraso para que el usuario vea el mensaje
+    }
+  } catch (error) {
+    console.error('Error al enviar el formulario de registro:', error);
+    mostrarMensaje('Ocurrió un error al intentar registrar. Por favor, intenta de nuevo.', 'danger');
+  }
+  finally {
+    // Volver a habilitar el botón
+    submitButton.disabled = false;
+    submitButton.textContent = 'Registrarse';
+  }
+});
+
+function mostrarMensaje(mensaje, tipo) {
+  messageContainer.innerHTML = `<div class="alert alert-${tipo}" role="alert">${mensaje}</div>`;
+  messageContainer.style.display = 'block';
+} 
+  </script>
 
 </body>
 

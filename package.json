@@ -1,0 +1,29 @@
+{
+  "name": "dulcemae-main",
+  "version": "1.0.0",
+  "description": "¡Bienvenidos a la página oficial de DulceMae!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tg20taps/Dulcemae.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tg20taps/Dulcemae/issues"
+  },
+  "homepage": "https://github.com/Tg20taps/Dulcemae#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1"
+  }
+}
