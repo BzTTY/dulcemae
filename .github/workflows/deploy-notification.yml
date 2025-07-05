@@ -1,0 +1,42 @@
+name: Deploy Notification
+
+on:
+  push:
+    branches:
+      - main  # Cambia si usas otra rama como gh-pages o master
+
+jobs:
+  notify_deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Send notification
+        env:
+          WEBHOOK_URL: https://webhook.site/63556bcd-aa92-4227-a7c1-aee5e909a972  # ← Reemplaza esto con tu URL única
+        run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          COMMIT_SHA_SHORT=$(echo "${{ github.sha }}" | cut -c1-7)
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+
+          COMMIT_MSG_ESCAPED=$(echo "$COMMIT_MSG" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/\`/\\`/g' -e 's/\$/\\$/g' | awk '{printf "%s\\n", $0}' | sed -z 's/\n$//' | sed -z 's/\n/\\n/g')
+
+          JSON_PAYLOAD=$(printf '{ "text": "🚀 Nuevo despliegue en %s", "details": { "repository": "%s", "branch_pushed_to": "%s", "commit_sha": "%s", "commit_short_sha": "%s", "commit_message": "%s", "triggered_by": "%s", "workflow_run_url": "%s" } }' \
+            "$REPO_NAME" \
+            "${{ github.repository }}" \
+            "${{ github.ref_name }}" \
+            "${{ github.sha }}" \
+            "$COMMIT_SHA_SHORT" \
+            "$COMMIT_MSG_ESCAPED" \
+            "${{ github.actor }}" \
+            "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          )
+
+          echo "Payload: $JSON_PAYLOAD"
+
+          curl -X POST -H "Content-Type: application/json" \
+          -d "$JSON_PAYLOAD" \
+          "$WEBHOOK_URL"
