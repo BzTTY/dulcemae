@@ -29,6 +29,10 @@
   <style>
     .cart-section .cart-container {
       margin-top: 40px;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     .cart-table {
       width: 100%;
@@ -37,7 +41,7 @@
       border-collapse: collapse;
     }
     .cart-table th, .cart-table td {
-      padding: 0.75rem;
+      padding: 1rem;
       vertical-align: middle;
       border-top: 1px solid #dee2e6;
       text-align: center;
@@ -58,11 +62,15 @@
       font-size: 1.5rem;
       font-weight: bold;
       margin-top: 20px;
+      padding-right: 15px;
     }
     .btn-remove {
       color: #dc3545;
       cursor: pointer;
       font-size: 1.2rem;
+    }
+    .btn-remove:hover {
+        color: #a71d2a;
     }
     .empty-cart-message {
         text-align: center;
@@ -80,7 +88,53 @@
     </div>
     <!-- header section starts -->
     <header class="header_section">
-        <!-- ... (Tu header de siempre, no lo pego para no alargar) ... -->
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Dulce Mae
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="menu.html">Catalogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Sobre Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="book.html">Pedido</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="login.html" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              <a class="cart_link" href="cart.html">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve"><g><g><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
+                <span class="cart-counter" id="cart-icon-counter" style="display: none;">0</span>
+              </a>
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="login.html" class="order_online">
+                Iniciar Sesión
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
     <!-- end header section -->
   </div>
@@ -99,7 +153,7 @@
             <table class="cart-table">
               <thead>
                 <tr>
-                  <th style="width: 10%;">Producto</th>
+                  <th style="width: 10%; text-align: left;">Producto</th>
                   <th style="width: 40%;"></th>
                   <th style="width: 15%;">Precio</th>
                   <th style="width: 15%;">Cantidad</th>
@@ -108,7 +162,7 @@
                 </tr>
               </thead>
               <tbody id="cart-items-container">
-                <!-- Las filas del carrito se insertarán aquí -->
+                <!-- Las filas del carrito se insertarán aquí por JavaScript -->
               </tbody>
             </table>
             <div id="cart-summary">
@@ -123,7 +177,71 @@
 
   <!-- footer section -->
   <footer class="footer_section">
-      <!-- ... (Tu footer de siempre) ... -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contactanos
+            </h4>
+            <div class="contact_link_box">
+              <a href="https://www.google.com/maps/place/Plaza+De+Alerce/@-41.3968119,-72.9062457,17z/data=!3m1!4b1!4m6!3m5!1s0x9618256138d95f47:0x4fff2c1866ed4df6!8m2!3d-41.396816!4d-72.9036708!16s%2Fg%2F11crzwnx77?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Ubicación
+                </span>
+              </a>
+              <a href="https://api.whatsapp.com/message/MRQ3F3HJOZ4MJ1?autoload=1&app_absent=0">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  +56 9 7956 2048
+                </span>
+              </a>
+              <a href="mailto:dulcemaeoficial@gmail.com">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  dulcemaeoficial@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="index.html" class="footer-logo">
+              Dulce Mae
+            </a>
+            <p>
+              Mi sueño es que mis productos lleguen a más personas. Aspiro a que en el futuro, mis creaciones estén disponibles en muchas pastelerías en Chile y que más familias puedan disfrutar de lo que hago con tanto cariño.
+            </p>
+            <div class="footer_social">
+              <a href="https://www.instagram.com/dulcemaeoficial/">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Horario
+          </h4>
+          <p>
+            Todos los días
+          </p>
+          <p>
+            10.00 Am -10.00 Pm
+          </p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> Todos los derechos reservados por
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">DIOSITO</a><br><br>
+          &copy; <span id="displayYear"></span> Distribuido por
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> la mami del Maty</a>
+        </p>
+      </div>
+    </div>
   </footer>
   <!-- footer section -->
 
@@ -146,23 +264,23 @@
             get: () => JSON.parse(localStorage.getItem('dulceMaeCart')) || [],
             save: (cart) => {
                 localStorage.setItem('dulceMaeCart', JSON.stringify(cart));
-                window.dispatchEvent(new CustomEvent('cartUpdated')); // Notificar a otras partes (como el header)
+                window.dispatchEvent(new CustomEvent('cartUpdated'));
             },
             removeItem: (productId) => {
                 let cart = localCart.get();
                 cart = cart.filter(item => item._id !== productId);
                 localCart.save(cart);
-                renderCart(); // Volver a dibujar el carrito
+                renderCart(); // Volver a dibujar el carrito sin recargar la página
             }
         };
 
         const renderCart = () => {
             const cart = localCart.get();
-            cartItemsContainer.innerHTML = ''; // Limpiar la tabla
-            cartSummaryContainer.innerHTML = ''; // Limpiar el resumen
+            cartItemsContainer.innerHTML = '';
+            cartSummaryContainer.innerHTML = '';
 
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<tr><td colspan="6" class="empty-cart-message">Tu carrito está vacío. ¡Añade algunos productos!</td></tr>';
+                cartItemsContainer.innerHTML = '<tr><td colspan="6" class="empty-cart-message">Tu carrito está vacío. <a href="menu.html">¡Ve a nuestro catálogo para añadir productos!</a></td></tr>';
                 return;
             }
 
@@ -175,11 +293,11 @@
                 const cartItemRow = `
                     <tr>
                         <td><img src="${item.imagenUrl}" alt="${item.nombre}" class="cart-item-image"></td>
-                        <td>${item.nombre}</td>
+                        <td style="text-align: left;">${item.nombre}</td>
                         <td>$${item.precio.toLocaleString('es-CL')}</td>
                         <td>${item.quantity}</td>
                         <td>$${subtotal.toLocaleString('es-CL')}</td>
-                        <td><i class="fa fa-trash btn-remove" data-product-id="${item._id}"></i></td>
+                        <td><i class="fa fa-trash btn-remove" data-product-id="${item._id}" title="Eliminar producto"></i></td>
                     </tr>
                 `;
                 cartItemsContainer.innerHTML += cartItemRow;
@@ -190,7 +308,7 @@
                     <p>Total: $${total.toLocaleString('es-CL')}</p>
                 </div>
                 <div class="btn_box" style="display: flex; justify-content: flex-end;">
-                    <a href="book.html" class="order_online">Proceder al Pago</a>
+                    <a href="book.html" class="order_online">Agendar Pedido</a>
                 </div>
             `;
             cartSummaryContainer.innerHTML = cartSummary;
@@ -205,6 +323,19 @@
                 }
             }
         });
+        
+        // Lógica para actualizar el contador del header (opcional, pero buena práctica)
+        const updateCartIcon = () => {
+          const cart = localCart.get();
+          const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+          const cartIcon = document.getElementById('cart-icon-counter');
+          if (cartIcon) {
+            cartIcon.textContent = totalItems;
+            cartIcon.style.display = totalItems > 0 ? 'inline-block' : 'none';
+          }
+        };
+        window.addEventListener('cartUpdated', updateCartIcon);
+        updateCartIcon();
 
         // Renderizar el carrito al cargar la página
         renderCart();
