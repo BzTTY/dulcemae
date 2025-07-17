@@ -1,156 +1,204 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- ... (Toda tu sección <head> es igual a la de las otras páginas) ... -->
-    <title>Dulce Mae - Finalizar Pedido</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Toda la sección <head> ... -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <title> Dulce Mae - Finalizar Pedido </title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    .order_summary { background-color: #222831; color: white; padding: 25px; border-radius: 8px; }
+    .order_summary h4 { color: #ffbe33; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
+    .order_summary ul { list-style: none; padding: 0; }
+    .order_summary li { margin-bottom: 10px; }
+    .cart_link { position: relative; }
+    .cart-counter { position: absolute; top: -8px; right: -12px; background-color: #ffbe33; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; border: 1px solid white; }
+  </style>
 </head>
 <body class="sub_page">
-    <div class="hero_area">
-        <div class="bg-box">
-            <img src="images/hero-bg.jpg" alt="">
-        </div>
-        <!-- ... (Pega aquí tu <header> completo, igual que en las otras páginas) ... -->
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
     </div>
+    <!-- ================= SECCIÓN HEADER COMPLETA ================= -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html"><span>Dulce Mae</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class=""> </span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="menu.html">Catalogo</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
+              <li class="nav-item active"><a class="nav-link" href="book.html">Pedido <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <div class="user_option">
+              <a href="login.html" class="user_link"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a class="cart_link" href="cart.html">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve"><g><g><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
+                <span class="cart-counter" id="cart-icon-counter" style="display: none;">0</span>
+              </a>
+              <form class="form-inline"><button class="btn my-2 my-sm-0 nav_search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button></form>
+              <a href="login.html" class="order_online">Iniciar Sesión</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- ================= FIN SECCIÓN HEADER ================= -->
+  </div>
 
-    <!-- book section -->
-    <section class="book_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-                <h2>
-                    Finaliza tu Pedido
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="form_container">
-                        <form id="checkoutForm">
-                            <h4>Información de Contacto y Entrega</h4>
-                            <div id="messageContainer" style="display: none; margin-bottom: 15px;"></div>
-                            <div>
-                                <input type="text" id="nombre_cliente" class="form-control" placeholder="Tu Nombre Completo" required />
-                            </div>
-                            <div>
-                                <input type="text" id="telefono_cliente" class="form-control" placeholder="Tu Número de Teléfono" required />
-                            </div>
-                            <div>
-                                <input type="email" id="correo_cliente" class="form-control" placeholder="Tu Correo Electrónico" required />
-                            </div>
-                            <div>
-                                <input type="text" id="direccion_entrega" class="form-control" placeholder="Dirección de Entrega" required />
-                            </div>
-                             <div>
-                                <textarea id="notas_pedido" class="form-control" placeholder="Notas adicionales para tu pedido (opcional)"></textarea>
-                            </div>
-                            <div class="btn_box">
-                                <button type="submit" id="submitOrderBtn">
-                                    Confirmar Pedido
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="order_summary">
-                        <h4>Resumen de tu Carrito</h4>
-                        <div id="summary-cart-items"></div>
-                        <hr>
-                        <h5 id="summary-total" style="text-align: right; font-weight: bold;"></h5>
-                    </div>
-                </div>
-            </div>
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container"><h2>Finaliza tu Pedido</h2></div>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="form_container">
+            <form id="checkoutForm">
+              <h4>Información de Contacto y Entrega</h4>
+              <div id="messageContainer" style="display: none; margin-bottom: 15px;"></div>
+              <div><input type="text" id="nombre_cliente" class="form-control" placeholder="Tu Nombre Completo" required /></div>
+              <div><input type="text" id="telefono_cliente" class="form-control" placeholder="Tu Número de Teléfono" required /></div>
+              <div><input type="email" id="correo_cliente" class="form-control" placeholder="Tu Correo Electrónico" required /></div>
+              <div><input type="text" id="direccion_entrega" class="form-control" placeholder="Dirección de Entrega" required /></div>
+              <div><textarea id="notas_pedido" class="form-control" placeholder="Notas adicionales para tu pedido (opcional)"></textarea></div>
+              <div class="btn_box"><button type="submit" id="submitOrderBtn">Confirmar Pedido</button></div>
+            </form>
+          </div>
         </div>
-    </section>
-    <!-- end book section -->
+        <div class="col-md-5">
+          <div class="order_summary">
+            <h4>Resumen de tu Pedido</h4>
+            <div id="summary-cart-items"><p>Cargando carrito...</p></div>
+            <hr>
+            <h5 id="summary-total" style="text-align: right; font-weight: bold;"></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ... (Pega aquí tu <footer> completo) ... -->
+  <!-- ================= SECCIÓN FOOTER COMPLETA ================= -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact"><h4>Contactanos</h4><div class="contact_link_box"><a href="https://www.google.com/maps/place/Plaza+De+Alerce/@-41.3968119,-72.9062457,17z/data=!3m1!4b1!4m6!3m5!1s0x9618256138d95f47:0x4fff2c1866ed4df6!8m2!3d-41.396816!4d-72.9036708!16s%2Fg%2F11crzwnx77?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Ubicación</span></a><a href="https://api.whatsapp.com/message/MRQ3F3HJOZ4MJ1?autoload=1&app_absent=0"><i class="fa fa-phone" aria-hidden="true"></i><span>+56 9 7956 2048</span></a><a href="mailto:dulcemaeoficial@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i><span>dulcemaeoficial@gmail.com</span></a></div></div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail"><a href="index.html" class="footer-logo">Dulce Mae</a><p>Mi sueño es que mis productos lleguen a más personas...</p><div class="footer_social"><a href="https://www.instagram.com/dulcemaeoficial/"><i class="fa fa-instagram" aria-hidden="true"></i></a></div></div>
+        </div>
+        <div class="col-md-4 footer-col"><h4>Horario</h4><p>Todos los días</p><p>10.00 Am -10.00 Pm</p></div>
+      </div>
+      <div class="footer-info"><p>&copy; <span id="displayYear"></span> Todos los derechos reservados por <a href="#">DIOSITO</a><br><br>&copy; <span id="displayYear2"></span> Distribuido por <a href="#">la mami del Maty</a></p></div>
+    </div>
+  </footer>
+  <!-- ================= FIN SECCIÓN FOOTER ================= -->
 
-    <!-- Scripts -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/custom.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const summaryItemsContainer = document.getElementById('summary-cart-items');
-            const summaryTotalContainer = document.getElementById('summary-total');
-            const checkoutForm = document.getElementById('checkoutForm');
-            const messageContainer = document.getElementById('messageContainer');
-            const apiBaseUrl = 'https://dulcemae.onrender.com';
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const summaryItemsContainer = document.getElementById('summary-cart-items');
+        const summaryTotalContainer = document.getElementById('summary-total');
+        const checkoutForm = document.getElementById('checkoutForm');
+        const messageContainer = document.getElementById('messageContainer');
+        const apiBaseUrl = 'https://dulcemae.onrender.com';
 
-            const cart = JSON.parse(localStorage.getItem('dulceMaeCart')) || [];
-
-            // --- Renderizar el resumen del carrito ---
-            if (cart.length === 0) {
-                summaryItemsContainer.innerHTML = '<p>No hay productos en tu carrito.</p>';
-                document.getElementById('submitOrderBtn').disabled = true;
-            } else {
-                let total = 0;
-                let itemsHtml = '<ul>';
-                cart.forEach(item => {
-                    const subtotal = item.precio * item.quantity;
-                    total += subtotal;
-                    itemsHtml += `<li>${item.quantity} x ${item.nombre} - <strong>$${subtotal.toLocaleString('es-CL')}</strong></li>`;
-                });
-                itemsHtml += '</ul>';
-                summaryItemsContainer.innerHTML = itemsHtml;
-                summaryTotalContainer.innerHTML = `Total: $${total.toLocaleString('es-CL')}`;
+        const localCart = {
+            get: () => JSON.parse(localStorage.getItem('dulceMaeCart')) || [],
+            save: (cart) => {
+                localStorage.setItem('dulceMaeCart', JSON.stringify(cart));
+                window.dispatchEvent(new CustomEvent('cartUpdated'));
             }
+        };
 
-            // --- Manejar el envío del formulario ---
-            checkoutForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const submitButton = document.getElementById('submitOrderBtn');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Procesando...';
+        const cart = localCart.get();
 
-                const orderDetails = {
-                    nombreCliente: document.getElementById('nombre_cliente').value,
-                    telefono: document.getElementById('telefono_cliente').value,
-                    correo: document.getElementById('correo_cliente').value,
-                    direccion: document.getElementById('direccion_entrega').value,
-                    notas: document.getElementById('notas_pedido').value,
-                    items: cart,
-                    total: cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0)
-                };
-
-                try {
-                    // Este es el endpoint que NECESITARÁS CREAR en tu backend
-                    const response = await fetch(`${apiBaseUrl}/api/orders` , {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Si estuvieras logueado, enviaríamos el token:
-                            // 'Authorization': `Bearer ${localStorage.getItem('userToken')}`
-                        },
-                        body: JSON.stringify(orderDetails)
-                    });
-
-                    const result = await response.json();
-
-                    if (!response.ok) {
-                        throw new Error(result.message || 'Hubo un error al procesar el pedido.');
-                    }
-
-                    // Pedido exitoso
-                    messageContainer.innerHTML = `<div class="alert alert-success">¡Gracias! Tu pedido ha sido recibido. Te hemos enviado un correo de confirmación.</div>`;
-                    messageContainer.style.display = 'block';
-                    localStorage.removeItem('dulceMaeCart'); // Limpiar el carrito
-                    window.dispatchEvent(new CustomEvent('cartUpdated')); // Actualizar ícono del header
-                    checkoutForm.reset();
-                    submitButton.style.display = 'none'; // Ocultar el botón de confirmar
-
-                } catch (error) {
-                    messageContainer.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
-                    messageContainer.style.display = 'block';
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Confirmar Pedido';
-                }
+        // --- Renderizar el resumen del carrito ---
+        if (cart.length === 0) {
+            summaryItemsContainer.innerHTML = '<p>No hay productos en tu carrito para agendar. <a href="menu.html">Vuelve al catálogo</a>.</p>';
+            document.getElementById('submitOrderBtn').disabled = true;
+        } else {
+            let total = 0;
+            let itemsHtml = '<ul style="padding-left: 0; list-style-type: none;">';
+            cart.forEach(item => {
+                const subtotal = item.precio * item.quantity;
+                total += subtotal;
+                itemsHtml += `<li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;"><span>${item.quantity} x ${item.nombre}</span> <strong>$${subtotal.toLocaleString('es-CL')}</strong></li>`;
             });
+            itemsHtml += '</ul>';
+            summaryItemsContainer.innerHTML = itemsHtml;
+            summaryTotalContainer.innerHTML = `Total: $${total.toLocaleString('es-CL')}`;
+        }
+
+        // --- Manejar el envío del formulario ---
+        checkoutForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const submitButton = document.getElementById('submitOrderBtn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Procesando...';
+
+            const orderDetails = {
+                nombreCliente: document.getElementById('nombre_cliente').value,
+                telefono: document.getElementById('telefono_cliente').value,
+                correo: document.getElementById('correo_cliente').value,
+                direccion: document.getElementById('direccion_entrega').value,
+                notas: document.getElementById('notas_pedido').value,
+                items: cart,
+                total: cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0)
+            };
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/api/orders`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderDetails)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || 'Hubo un error al procesar el pedido.');
+                }
+
+                messageContainer.innerHTML = `<div class="alert alert-success">¡Gracias! Tu pedido ha sido recibido. Te hemos enviado un correo de confirmación.</div>`;
+                messageContainer.style.display = 'block';
+                localCart.save([]); // Limpiar el carrito
+                checkoutForm.style.display = 'none'; // Ocultar el formulario
+
+            } catch (error) {
+                messageContainer.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+                messageContainer.style.display = 'block';
+                submitButton.disabled = false;
+                submitButton.textContent = 'Confirmar Pedido';
+            }
         });
-    </script>
+
+        // Lógica para actualizar el contador del header
+        const updateCartIcon = () => {
+          const cart = localCart.get();
+          const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+          const cartIcon = document.getElementById('cart-icon-counter');
+          if (cartIcon) {
+            cartIcon.textContent = totalItems;
+            cartIcon.style.display = totalItems > 0 ? 'inline-block' : 'none';
+          }
+        };
+        window.addEventListener('cartUpdated', updateCartIcon);
+        updateCartIcon();
+    });
+  </script>
 </body>
 </html>
