@@ -1,55 +1,59 @@
+// backend/models/Order.js
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
+  // Hacemos el campo de usuario opcional por ahora.
+  // Si el usuario está logueado, lo guardaremos. Si no, será null.
   usuario: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false // No es requerido para pedidos de invitados
   },
-  productos: [
+  // Campos para clientes no registrados (invitados)
+  nombreCliente: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  correo: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  telefono: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  // Productos en el pedido
+  items: [
     {
-      producto_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true,
-      },
-      nombre: {
-        type: String,
-        required: true,
-      },
-      cantidad: {
-        type: Number,
-        required: true,
-        min: [1, 'La cantidad debe ser al menos 1'],
-      },
-      precio_unitario: {
-        type: Number,
-        required: true,
-      },
-    },
+      _id: { type: String, required: true }, // Guardamos el ID como string
+      nombre: { type: String, required: true },
+      quantity: { type: Number, required: true },
+      precio: { type: Number, required: true }
+    }
   ],
   direccion_envio: {
     type: String,
     required: [true, 'La dirección de envío es obligatoria'],
     trim: true,
   },
-  total_pedido: {
+  total: {
     type: Number,
     required: true,
   },
-  estado_pedido: {
+  estado: {
     type: String,
     required: true,
-    enum: ['Pendiente', 'Pagado', 'En preparación', 'Enviado', 'Entregado', 'Cancelado'],
+    enum: ['Pendiente', 'Confirmado', 'En preparación', 'Enviado', 'Entregado', 'Cancelado'],
     default: 'Pendiente',
   },
-  fecha_pedido: {
-    type: Date,
-    default: Date.now,
-  },
-  // Podríamos añadir un campo para el método de pago más adelante
-  // metodo_pago: String,
-}, { timestamps: true });
+  notas: {
+      type: String,
+      trim: true
+  }
+}, { timestamps: true }); // timestamps agrega createdAt y updatedAt automáticamente
 
 const Order = mongoose.model('Order', orderSchema);
 
