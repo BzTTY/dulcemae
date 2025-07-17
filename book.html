@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Toda la sección <head> ... -->
+  <!-- ... (Toda tu sección <head> se mantiene igual) ... -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,6 +21,10 @@
     .order_summary li { margin-bottom: 10px; }
     .cart_link { position: relative; }
     .cart-counter { position: absolute; top: -8px; right: -12px; background-color: #ffbe33; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; border: 1px solid white; }
+    /* Estilos para el modal de éxito */
+    .modal-content-success { background-color: #28a745; color: white; text-align: center; }
+    .modal-header-success { border-bottom: none; }
+    .modal-body-success .fa-check-circle { font-size: 5rem; }
   </style>
 </head>
 <body class="sub_page">
@@ -57,6 +61,7 @@
     <!-- ================= FIN SECCIÓN HEADER ================= -->
   </div>
 
+  <!-- book section -->
   <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container"><h2>Finaliza tu Pedido</h2></div>
@@ -86,6 +91,7 @@
       </div>
     </div>
   </section>
+  <!-- end book section -->
 
   <!-- ================= SECCIÓN FOOTER COMPLETA ================= -->
   <footer class="footer_section">
@@ -104,7 +110,29 @@
   </footer>
   <!-- ================= FIN SECCIÓN FOOTER ================= -->
 
+  <!-- ========= INICIO DEL MODAL DE ÉXITO ========= -->
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content modal-content-success">
+        <div class="modal-header modal-header-success">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body modal-body-success">
+          <i class="fa fa-check-circle"></i>
+          <h4 class="mt-3">¡Pedido Confirmado!</h4>
+          <p>Hemos recibido tu pedido correctamente. <br>Recibirás un correo con los detalles.</p>
+          <p><small>Serás redirigido al inicio en 5 segundos...</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ========= FIN DEL MODAL DE ÉXITO ========= -->
+
+  <!-- Scripts -->
   <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/custom.js"></script>
 
@@ -128,8 +156,7 @@
 
         // --- Renderizar el resumen del carrito ---
         if (cart.length === 0) {
-            summaryItemsContainer.innerHTML = '<p>No hay productos en tu carrito para agendar. <a href="menu.html">Vuelve al catálogo</a>.</p>';
-            document.getElementById('submitOrderBtn').disabled = true;
+            document.querySelector('.book_section .row').innerHTML = '<div class="col-12"><p class="empty-cart-message">No tienes productos en tu carrito para agendar un pedido. <a href="menu.html">Vuelve al catálogo</a> para empezar.</p></div>';
         } else {
             let total = 0;
             let itemsHtml = '<ul style="padding-left: 0; list-style-type: none;">';
@@ -173,10 +200,14 @@
                     throw new Error(result.message || 'Hubo un error al procesar el pedido.');
                 }
 
-                messageContainer.innerHTML = `<div class="alert alert-success">¡Gracias! Tu pedido ha sido recibido. Te hemos enviado un correo de confirmación.</div>`;
-                messageContainer.style.display = 'block';
-                localCart.save([]); // Limpiar el carrito
-                checkoutForm.style.display = 'none'; // Ocultar el formulario
+                // --- ÉXITO: Limpiar y mostrar el modal ---
+                localCart.save([]); // Limpiar el carrito de LocalStorage
+                $('#successModal').modal('show'); // Mostrar el modal de éxito con jQuery
+
+                // Redirigir al inicio después de 5 segundos
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 5000);
 
             } catch (error) {
                 messageContainer.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
