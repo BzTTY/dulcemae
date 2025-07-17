@@ -1,44 +1,60 @@
-const Product = require('../models/Product.js'); // Importamos el modelo Product
+// backend/controllers/productController.js
 
-// @desc    Obtener todos los productos
-// @route   GET /api/products
-// @access  Public
+const Product = require('../models/Product'); // Importamos el modelo de Producto
+
+/**
+ * @desc    Controlador para obtener todos los productos disponibles.
+ * @route   GET /api/products
+ * @access  Public
+ */
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({}); // Encuentra todos los documentos en la colección Product
-    // Podríamos añadir filtros o paginación aquí más adelante
-    res.status(200).json(products);
-  } catch (error) {
-    console.error('Error al obtener productos:', error);
-    res.status(500).json({ message: 'Error del servidor al obtener los productos' });
+    // Buscamos todos los productos que estén marcados como 'disponible: true'.
+    // Esto es útil para no mostrar en la tienda productos que están fuera de stock o desactivados.
+    const products = await Product.find({ disponible: true });
+
+    // Si no se encuentran productos, puedes decidir si enviar un array vacío (lo normal) o un mensaje.
+    // Enviar un array vacío es generalmente mejor para que el frontend no falle.
+    res.json(products);
+
+  } catch (err) {
+    console.error('Error en el controlador getAllProducts:', err.message);
+    res.status(500).json({ message: 'Error del Servidor al obtener los productos.' });
   }
 };
 
-// @desc    Obtener un solo producto por su ID
-// @route   GET /api/products/:id
-// @access  Public
+/**
+ * @desc    Controlador para obtener un único producto por su ID.   
+ * @route   GET /api/products/:id
+ * @access  Public
+ */
 const getProductById = async (req, res) => {
   try {
+    // Obtenemos el ID de los parámetros de la URL (ej: /api/products/A1B2C3D4)
     const product = await Product.findById(req.params.id);
 
-    if (product) {
-      res.status(200).json(product);
-    } else {
-      res.status(404).json({ message: 'Producto no encontrado' });
+    // Si Mongoose no encuentra un producto con ese ID, `product` será null.
+    if (!product) {
+      return res.status(404).json({ message: 'Producto no encontrado.' });
     }
-  } catch (error) {
-    console.error('Error al obtener el producto por ID:', error);
-    // Si el ID no tiene un formato válido de ObjectId de MongoDB, findById lanzará un error
-    if (error.kind === 'ObjectId') {
-        return res.status(404).json({ message: 'Producto no encontrado (ID inválido)' });
+
+    // Si el producto se encuentra, lo devolvemos como JSON.
+    res.json(product);
+
+  } catch (err) {
+    console.error('Error en el controlador getProductById:', err.message);
+
+    // Este chequeo es útil porque si el ID proporcionado no tiene un formato de ObjectId válido,
+    // Mongoose arrojará un error de tipo 'CastError'.
+    if (err.name === 'CastError') {
+      return res.status(400).json({ message: 'ID de producto inválido.' });
     }
-    res.status(500).json({ message: 'Error del servidor al obtener el producto' });
+
+    res.status(500).json({ message: 'Error del Servidor.' });
   }
 };
 
-// Más adelante podríamos añadir funciones para crear, actualizar y eliminar productos
-// si necesitas un panel de administración.
-
+// Exportamos las funciones para que puedan ser usadas en productRoutes.js
 module.exports = {
   getAllProducts,
   getProductById,
