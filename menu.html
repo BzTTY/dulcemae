@@ -31,7 +31,6 @@
   <link href="css/responsive.css" rel="stylesheet" />
 
   <style>
-    /* Estilo para el contador del carrito */
     .cart_link {
       position: relative;
     }
@@ -39,7 +38,7 @@
       position: absolute;
       top: -8px;
       right: -12px;
-      background-color: #ffbe33; /* Color que combine con tu tema */
+      background-color: #ffbe33;
       color: white;
       border-radius: 50%;
       padding: 2px 6px;
@@ -95,7 +94,7 @@
                 <span class="cart-counter" id="cart-icon-counter" style="display: none;">0</span>
               </a>
               <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
@@ -122,17 +121,15 @@
       <ul class="filters_menu">
         <li class="active" data-filter="*">Todo</li>
         <li data-filter=".torta">Torta</li>
-        <li data-filter=".kutchen">Kutchen</li>
+        <li data-filter=".kutchen">Kuchen</li>
         <li data-filter=".brownie">Brownie</li>
         <li data-filter=".pastelito">Pastelito</li>
       </ul>
 
       <div class="filters-content">
         <div class="row grid" id="product-list">
-          <!-- JavaScript llenará esta sección dinámicamente -->
-          <div class="col-12">
-            <p style="text-align: center;">Cargando nuestros deliciosos productos...</p>
-          </div>
+            <!-- Contenido dinámico se insertará aquí -->
+            <div class="col-12"><p style="text-align:center;">Cargando productos...</p></div>
         </div>
       </div>
 
@@ -167,7 +164,7 @@
                   +56 9 7956 2048
                 </span>
               </a>
-              <a href="">
+              <a href="mailto:dulcemaeoficial@gmail.com">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
                   dulcemaeoficial@gmail.com
@@ -182,7 +179,7 @@
               Dulce Mae
             </a>
             <p>
-              Mi sueño es que mis productos lleguen a más personas. Aspiro a que en el futuro, mis creaciones estén disponibles en muchas pastelerías en Chile y que más familias puedan disfrutar de lo que hago con tanto cariño
+              Mi sueño es que mis productos lleguen a más personas. Aspiro a que en el futuro, mis creaciones estén disponibles en muchas pastelerías en Chile y que más familias puedan disfrutar de lo que hago con tanto cariño.
             </p>
             <div class="footer_social">
               <a href="https://www.instagram.com/dulcemaeoficial/">
@@ -206,9 +203,9 @@
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> Todos los derechos reservados por
-          <a href="https://media.istockphoto.com/id/1464383776/es/foto/jesucristo-resucitado-ascendiendo-sobre-el-cielo-y-las-nubes-concepto-del-cielo.webp?s=2048x2048&w=is&k=20&c=JlcghhHZZo-WEIIhsWameVAhj0HxUJ4y0oXSF0tghco=">DIOSITO</a><br><br>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">DIOSITO</a><br><br>
           &copy; <span id="displayYear"></span> Distribuido por
-          <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjYcYp19XSUN77970riaFj_3rs-dL5A-k1J5sU9FhHIUvXIVeb2PdPngn9xq0-XCSt8htKjX-oPb9xtWnpy6GwEtZsVKcpQJ1lcAgJIFvAc1OtSB01SLbcb4Uq_wDigWyxPE8IpYWXD6jU/s1600/Incredibles_19.jpg" target="_blank"> la mami del Maty</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> la mami del Maty</a>
         </p>
       </div>
     </div>
@@ -227,32 +224,33 @@
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  
   <!-- custom js -->
-  <script src="js/custom.js"></script>
+  <!-- <script src="js/custom.js"></script> --> <!-- ¡OJO! He comentado esto para evitar doble inicialización de Isotope -->
 
-  <!-- ========= INICIO DEL SCRIPT PARA CARGAR PRODUCTOS Y MANEJAR CARRITO LOCAL ========= -->
+  <!-- ========= INICIO DEL SCRIPT PARA CARGAR PRODUCTOS Y CARRITO ========= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const productContainer = document.getElementById('product-list');
       const apiBaseUrl = 'https://dulcemae.onrender.com';
-      let allProducts = []; // Para guardar los productos cargados
+      let allProducts = []; // Para guardar los productos cargados y su información
 
       if (!productContainer) {
         console.error('El contenedor de productos #product-list no se encontró.');
         return;
       }
 
-      // --- LÓGICA DEL CARRITO LOCAL ---
+      // --- LÓGICA DEL CARRITO LOCAL (LocalStorage) ---
       const localCart = {
-        get: () => {
-          const cartString = localStorage.getItem('dulceMaeCart');
-          return cartString ? JSON.parse(cartString) : [];
-        },
+        get: () => JSON.parse(localStorage.getItem('dulceMaeCart')) || [],
         save: (cart) => {
           localStorage.setItem('dulceMaeCart', JSON.stringify(cart));
           window.dispatchEvent(new CustomEvent('cartUpdated'));
         },
-        add: (productId, productToAdd) => {
+        add: (productId) => {
+          const productToAdd = allProducts.find(p => p._id === productId);
+          if (!productToAdd) return;
+
           let cart = localCart.get();
           const existingItem = cart.find(item => item._id === productId);
 
@@ -262,35 +260,32 @@
             cart.push({ ...productToAdd, quantity: 1 });
           }
           localCart.save(cart);
-          alert(`'${productToAdd.nombre}' ha sido añadido al carrito.`);
+          alert(`'${productToAdd.nombre}' fue añadido al carrito.`);
         }
       };
 
-      // --- LÓGICA PARA ACTUALIZAR EL ÍCONO DEL CARRITO ---
+      // --- ACTUALIZAR EL ÍCONO DEL CARRITO ---
       const updateCartIcon = () => {
         const cart = localCart.get();
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         const cartIcon = document.getElementById('cart-icon-counter');
         if (cartIcon) {
           cartIcon.textContent = totalItems;
-          cartIcon.style.display = totalItems > 0 ? 'block' : 'none';
+          cartIcon.style.display = totalItems > 0 ? 'inline-block' : 'none';
         }
       };
 
-      // Escuchar el evento personalizado para actualizar el ícono
       window.addEventListener('cartUpdated', updateCartIcon);
-      // Actualizar el ícono al cargar la página
-      updateCartIcon();
+      updateCartIcon(); // Llamada inicial al cargar la página
 
-      // --- LÓGICA PARA OBTENER Y MOSTRAR PRODUCTOS ---
+      // --- OBTENER Y MOSTRAR PRODUCTOS ---
       const fetchProducts = async () => {
         try {
           const response = await fetch(`${apiBaseUrl}/api/products`);
           if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
           
-          allProducts = await response.json(); // Guardar productos en la variable global
-
-          productContainer.innerHTML = ''; // Limpiar
+          allProducts = await response.json();
+          productContainer.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
 
           if (allProducts.length === 0) {
             productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">No hay productos disponibles.</p></div>';
@@ -312,7 +307,7 @@
                       <div class="options">
                         <h6>$${product.precio.toLocaleString('es-CL')}</h6>
                         <a href="#" class="btn-add-to-cart" data-product-id="${product._id}">
-                          <svg style="width: 20px; height: 20px;" viewBox="0 0 456.029 456.029"><g><g><path style="fill:#ffffff;" d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path style="fill:#ffffff;" d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path style="fill:#ffffff;" d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
+                          <svg style="width: 20px; height: 20px; fill: white;" viewBox="0 0 456.029 456.029"><g><g><path d="M345.6,338.862..."/></g></g>...</svg>
                         </a>
                       </div>
                     </div>
@@ -323,26 +318,29 @@
             productContainer.innerHTML += productCardHtml;
           });
 
-          // Reinicializar Isotope para que los filtros funcionen con el contenido dinámico
-          if (window.jQuery && window.jQuery.fn.isotope) {
-            var $grid = $('.grid').isotope({
+          // --- INICIALIZACIÓN DE ISOTOPE (LA PARTE CLAVE) ---
+          // Esperamos a que las imágenes se carguen antes de inicializar Isotope
+          var $grid = $('.grid').imagesLoaded(function() {
+            $grid.isotope({
               itemSelector: '.all',
               percentPosition: true,
-              masonry: { columnWidth: '.all' }
+              masonry: {
+                columnWidth: '.all'
+              }
             });
-            $('.filters_menu li').on('click', function() {
-              $('.filters_menu li').removeClass('active');
-              $(this).addClass('active');
-              var filterValue = $(this).attr('data-filter');
-              $grid.isotope({ filter: filterValue });
-            });
-          } else {
-             console.error('Isotope no está cargado o no es una función de jQuery.');
-          }
+          });
+
+          // Re-vincular el evento de clic para los filtros
+          $('.filters_menu li').on('click', function() {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+          });
 
         } catch (error) {
           console.error('Error al cargar los productos:', error);
-          productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">Hubo un error al cargar los productos. Por favor, intenta de nuevo más tarde.</p></div>';
+          productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">Hubo un error al cargar los productos.</p></div>';
         }
       };
 
@@ -350,12 +348,9 @@
       productContainer.addEventListener('click', (event) => {
         const button = event.target.closest('.btn-add-to-cart');
         if (button) {
-          event.preventDefault(); // Evita que el enlace '#' recargue la página
+          event.preventDefault();
           const productId = button.dataset.productId;
-          const productToAdd = allProducts.find(p => p._id === productId);
-          if (productToAdd) {
-            localCart.add(productId, productToAdd);
-          }
+          localCart.add(productId);
         }
       });
 
