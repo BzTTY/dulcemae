@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -94,7 +93,7 @@
                 <span class="cart-counter" id="cart-icon-counter" style="display: none;">0</span>
               </a>
               <form class="form-inline">
-                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
@@ -128,7 +127,6 @@
 
       <div class="filters-content">
         <div class="row grid" id="product-list">
-            <!-- Contenido dinámico se insertará aquí -->
             <div class="col-12"><p style="text-align:center;">Cargando productos...</p></div>
         </div>
       </div>
@@ -175,7 +173,7 @@
         </div>
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
-            <a href="" class="footer-logo">
+            <a href="index.html" class="footer-logo">
               Dulce Mae
             </a>
             <p>
@@ -222,25 +220,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <!-- isotope js -->
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- imagesloaded pkgd.min.js -->
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   
   <!-- custom js -->
-  <!-- <script src="js/custom.js"></script> --> <!-- ¡OJO! He comentado esto para evitar doble inicialización de Isotope -->
+  <!-- <script src="js/custom.js"></script> --> <!-- Mantenemos esto comentado -->
 
   <!-- ========= INICIO DEL SCRIPT PARA CARGAR PRODUCTOS Y CARRITO ========= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const productContainer = document.getElementById('product-list');
       const apiBaseUrl = 'https://dulcemae.onrender.com';
-      let allProducts = []; // Para guardar los productos cargados y su información
+      let allProducts = [];
 
       if (!productContainer) {
         console.error('El contenedor de productos #product-list no se encontró.');
         return;
       }
 
-      // --- LÓGICA DEL CARRITO LOCAL (LocalStorage) ---
+      // --- LÓGICA DEL CARRITO LOCAL ---
       const localCart = {
         get: () => JSON.parse(localStorage.getItem('dulceMaeCart')) || [],
         save: (cart) => {
@@ -276,7 +276,7 @@
       };
 
       window.addEventListener('cartUpdated', updateCartIcon);
-      updateCartIcon(); // Llamada inicial al cargar la página
+      updateCartIcon();
 
       // --- OBTENER Y MOSTRAR PRODUCTOS ---
       const fetchProducts = async () => {
@@ -285,7 +285,7 @@
           if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
           
           allProducts = await response.json();
-          productContainer.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
+          productContainer.innerHTML = '';
 
           if (allProducts.length === 0) {
             productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">No hay productos disponibles.</p></div>';
@@ -307,7 +307,7 @@
                       <div class="options">
                         <h6>$${product.precio.toLocaleString('es-CL')}</h6>
                         <a href="#" class="btn-add-to-cart" data-product-id="${product._id}">
-                          <svg style="width: 20px; height: 20px; fill: white;" viewBox="0 0 456.029 456.029"><g><g><path d="M345.6,338.862..."/></g></g>...</svg>
+                          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029; fill: white; width: 20px; height: 20px;" xml:space="preserve"><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></svg>
                         </a>
                       </div>
                     </div>
@@ -319,8 +319,8 @@
           });
 
           // --- INICIALIZACIÓN DE ISOTOPE (LA PARTE CLAVE) ---
-          // Esperamos a que las imágenes se carguen antes de inicializar Isotope
-          var $grid = $('.grid').imagesLoaded(function() {
+          var $grid = $('.grid');
+          $grid.imagesLoaded(function(){
             $grid.isotope({
               itemSelector: '.all',
               percentPosition: true,
@@ -330,7 +330,6 @@
             });
           });
 
-          // Re-vincular el evento de clic para los filtros
           $('.filters_menu li').on('click', function() {
             $('.filters_menu li').removeClass('active');
             $(this).addClass('active');
@@ -340,7 +339,7 @@
 
         } catch (error) {
           console.error('Error al cargar los productos:', error);
-          productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">Hubo un error al cargar los productos.</p></div>';
+          productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">Hubo un error al cargar los productos. Por favor, intenta de nuevo más tarde.</p></div>';
         }
       };
 
@@ -360,5 +359,4 @@
   <!-- ========= FIN DEL SCRIPT ========= -->
 
 </body>
-
 </html>
