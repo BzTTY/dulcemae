@@ -30,6 +30,25 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
+  <style>
+    /* Estilo para el contador del carrito */
+    .cart_link {
+      position: relative;
+    }
+    .cart-counter {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background-color: #ffbe33; /* Color que combine con tu tema */
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid white;
+    }
+  </style>
+
 </head>
 
 <body class="sub_page">
@@ -72,11 +91,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="cart.html">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g><g><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" /></g></g>
-                  <g><g><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z" /></g></g>
-                  <g><g><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" /></g></g>
-                </svg>
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve"><g><g><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
                 <span class="cart-counter" id="cart-icon-counter" style="display: none;">0</span>
               </a>
               <form class="form-inline">
@@ -106,21 +121,19 @@
 
       <ul class="filters_menu">
         <li class="active" data-filter="*">Todo</li>
-        <li data-filter=".tortas">Tortas</li>
-        <li data-filter=".kuchen">Kuchen</li>
+        <li data-filter=".torta">Torta</li>
+        <li data-filter=".kutchen">Kutchen</li>
         <li data-filter=".brownie">Brownie</li>
         <li data-filter=".pastelito">Pastelito</li>
       </ul>
 
       <div class="filters-content">
-        <!-- ===== INICIO DEL CONTENEDOR DINÁMICO ===== -->
         <div class="row grid" id="product-list">
           <!-- JavaScript llenará esta sección dinámicamente -->
           <div class="col-12">
             <p style="text-align: center;">Cargando nuestros deliciosos productos...</p>
           </div>
         </div>
-        <!-- ===== FIN DEL CONTENEDOR DINÁMICO ===== -->
       </div>
 
       <div class="btn-box">
@@ -217,40 +230,75 @@
   <!-- custom js -->
   <script src="js/custom.js"></script>
 
-  <!-- ========= INICIO DEL SCRIPT PARA CARGAR PRODUCTOS ========= -->
+  <!-- ========= INICIO DEL SCRIPT PARA CARGAR PRODUCTOS Y MANEJAR CARRITO LOCAL ========= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const productContainer = document.getElementById('product-list');
       const apiBaseUrl = 'https://dulcemae.onrender.com';
+      let allProducts = []; // Para guardar los productos cargados
 
       if (!productContainer) {
         console.error('El contenedor de productos #product-list no se encontró.');
         return;
       }
 
+      // --- LÓGICA DEL CARRITO LOCAL ---
+      const localCart = {
+        get: () => {
+          const cartString = localStorage.getItem('dulceMaeCart');
+          return cartString ? JSON.parse(cartString) : [];
+        },
+        save: (cart) => {
+          localStorage.setItem('dulceMaeCart', JSON.stringify(cart));
+          window.dispatchEvent(new CustomEvent('cartUpdated'));
+        },
+        add: (productId, productToAdd) => {
+          let cart = localCart.get();
+          const existingItem = cart.find(item => item._id === productId);
+
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push({ ...productToAdd, quantity: 1 });
+          }
+          localCart.save(cart);
+          alert(`'${productToAdd.nombre}' ha sido añadido al carrito.`);
+        }
+      };
+
+      // --- LÓGICA PARA ACTUALIZAR EL ÍCONO DEL CARRITO ---
+      const updateCartIcon = () => {
+        const cart = localCart.get();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartIcon = document.getElementById('cart-icon-counter');
+        if (cartIcon) {
+          cartIcon.textContent = totalItems;
+          cartIcon.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+      };
+
+      // Escuchar el evento personalizado para actualizar el ícono
+      window.addEventListener('cartUpdated', updateCartIcon);
+      // Actualizar el ícono al cargar la página
+      updateCartIcon();
+
+      // --- LÓGICA PARA OBTENER Y MOSTRAR PRODUCTOS ---
       const fetchProducts = async () => {
         try {
           const response = await fetch(`${apiBaseUrl}/api/products`);
-          if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
-          }
-          const products = await response.json();
+          if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+          
+          allProducts = await response.json(); // Guardar productos en la variable global
 
-          productContainer.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
+          productContainer.innerHTML = ''; // Limpiar
 
-          if (products.length === 0) {
-            productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">No hay productos disponibles en este momento.</p></div>';
+          if (allProducts.length === 0) {
+            productContainer.innerHTML = '<div class="col-12"><p style="text-align: center;">No hay productos disponibles.</p></div>';
             return;
           }
 
-          // Un array para almacenar la información completa de los productos cargados
-          let loadedProducts = products;
-
-          products.forEach(product => {
-            // Usamos la categoría del producto para el filtro de Isotope.
-            // Es importante que coincida con los data-filter de tu menú (ej. .tortas, .kuchen)
-            const categoriaClass = product.categoria.toLowerCase(); 
-            
+          allProducts.forEach(product => {
+            const categoriaClass = product.categoria.toLowerCase().replace(/ /g, '-');
             const productCardHtml = `
               <div class="col-sm-6 col-lg-4 all ${categoriaClass}">
                 <div class="box">
@@ -264,7 +312,7 @@
                       <div class="options">
                         <h6>$${product.precio.toLocaleString('es-CL')}</h6>
                         <a href="#" class="btn-add-to-cart" data-product-id="${product._id}">
-                           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve"><g><g><path style="fill:#FF9999;" d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path style="fill:#FF9999;" d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path style="fill:#FF9999;" d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
+                          <svg style="width: 20px; height: 20px;" viewBox="0 0 456.029 456.029"><g><g><path style="fill:#ffffff;" d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z"/></g></g><g><g><path style="fill:#ffffff;" d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z"/></g></g><g><g><path style="fill:#ffffff;" d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z"/></g></g></svg>
                         </a>
                       </div>
                     </div>
@@ -275,22 +323,21 @@
             productContainer.innerHTML += productCardHtml;
           });
 
-          // Reinicializar Isotope después de añadir los elementos dinámicamente
-          // Esto es importante para que los filtros funcionen
+          // Reinicializar Isotope para que los filtros funcionen con el contenido dinámico
           if (window.jQuery && window.jQuery.fn.isotope) {
             var $grid = $('.grid').isotope({
               itemSelector: '.all',
               percentPosition: true,
-              masonry: {
-                columnWidth: '.all'
-              }
+              masonry: { columnWidth: '.all' }
             });
-             $('.filters_menu li').on('click', function() {
-                $('.filters_menu li').removeClass('active');
-                $(this).addClass('active');
-                var filterValue = $(this).attr('data-filter');
-                $grid.isotope({ filter: filterValue });
+            $('.filters_menu li').on('click', function() {
+              $('.filters_menu li').removeClass('active');
+              $(this).addClass('active');
+              var filterValue = $(this).attr('data-filter');
+              $grid.isotope({ filter: filterValue });
             });
+          } else {
+             console.error('Isotope no está cargado o no es una función de jQuery.');
           }
 
         } catch (error) {
@@ -299,10 +346,23 @@
         }
       };
 
+      // --- EVENT LISTENER PARA AÑADIR AL CARRITO ---
+      productContainer.addEventListener('click', (event) => {
+        const button = event.target.closest('.btn-add-to-cart');
+        if (button) {
+          event.preventDefault(); // Evita que el enlace '#' recargue la página
+          const productId = button.dataset.productId;
+          const productToAdd = allProducts.find(p => p._id === productId);
+          if (productToAdd) {
+            localCart.add(productId, productToAdd);
+          }
+        }
+      });
+
       fetchProducts();
     });
   </script>
-  <!-- ========= FIN DEL SCRIPT PARA CARGAR PRODUCTOS ========= -->
+  <!-- ========= FIN DEL SCRIPT ========= -->
 
 </body>
 
