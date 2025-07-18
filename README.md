@@ -93,7 +93,7 @@ Esto descargará el proyecto en una carpeta llamada dulcemae.
 
 
 ## 🔗🍰 link de la pagina.
-[VER](https://bztty.github.io/webpage.github.io/index.html)
+[VER](https://bztty.github.io/dulcemae/)
 
 ---
 
