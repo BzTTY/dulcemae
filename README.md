@@ -53,10 +53,10 @@ Nuestro propósito como equipo es implementar una plataforma en la que se pueda 
 |semana 6 |creacion carta Gantt          |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%206)    |
 |semana 7 |creacion de la pagina         |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%207/DulceMae)|
 |semana 8 |prototipo funcional de la pagina|[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%208)  |
-|semana 9 |presentacion del proyecto     |                                                                                  |
-|semana 10|avances base de datos         |                                                                                  |
-|semana 11|avances carrito+registro      |                                                                                  |
-|semana 12|formulario compra e insignias |                                                                                  |
+|semana 9 |presentacion del proyecto     |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%209)  |
+|semana 10|avances base de datos         |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%2010)  |
+|semana 11|avances carrito+registro      |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%2011)  |
+|semana 12|formulario compra e insignias |[VER](https://github.com/BzTTY/webpage.github.io/tree/main/Avances/SEMANA%2012)  |
 ---
 
 ## ⬇️ Instalacion.
